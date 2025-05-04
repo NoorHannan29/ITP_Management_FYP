@@ -1,0 +1,93 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #5ce5eb;
+}
+
+header {
+    background-color: #5ce5eb;
+    text-align: center;
+    padding: 20px 0;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 50px;
+    color: #000;
+}
+
+.container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 40px 50px 0px 150px;
+    flex-wrap: nowrap;
+    gap: 50px;
+}
+
+.login-box {
+    background-color: #4ce0e6;
+    border-radius: 20px;
+    padding: 40px 60px;
+    width: 700px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.login-box h2 {
+    margin-top: 0;
+    font-size: 74px;
+    color: #000;
+}
+
+.login-box label {
+    display: block;
+    margin-top: 60px;
+    margin-bottom: 18px;
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.login-box input {
+    width: 100%;
+    padding: 20px;
+    font-size: 22px;
+    border-radius: 40px;
+    border: none;
+    margin-bottom: 10px;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding: 15px;
+}
+
+.button-group button {
+    padding: 22px 34px;
+    font-size: 15px;
+    border: none;
+    border-radius: 20px;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.info-box {
+    background-color: #4ce0e6;
+    border-radius: 20px;
+    padding: 40px;
+    font-size: 26px;
+    text-align: center;
+    max-width: 320px;
+    color: black;
+    margin-bottom: 450px; /* adjust if needed */
+}
+
+
