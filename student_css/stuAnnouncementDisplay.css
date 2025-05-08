@@ -1,0 +1,30 @@
+.main-layout {
+    display: flex;
+}
+
+.sidebar {
+    width: 200px;
+    background-color: #3bb9ff;
+    padding: 20px;
+}
+
+.content {
+    flex: 1;
+    padding: 40px;
+    background-color: white;
+}
+
+.announcement-title {
+    background-color: #59e3e3;
+    border-radius: 40px;
+    padding: 15px 30px;
+    display: inline-block;
+    font-size: 18px;
+    margin-bottom: 40px;
+}
+
+.announcement-body {
+    font-size: 20px;
+    text-align: left;
+    margin-left: 20px;
+}

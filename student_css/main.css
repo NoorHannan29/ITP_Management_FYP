@@ -1,19 +1,54 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+/* Fixed Header */
+header {
+    background-color: #5ce5eb;
+    text-align: left;
+    padding: 10px 20px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+header h1 {
+    font-size: 35px;
+    margin: 0;
+}
+
+/* Main layout container */
+.main-layout {
+    display: flex;
+    padding-top: 60px; 
+    transition: margin-left 0.3s ease;
+}
+
+/* Sidebar */
 .sidebar {
     width: 180px;
     background-color: #33bfff;
     height: 100vh;
+    position: fixed;
+    top: 60px;
+    left: 0;
     transition: width 0.3s ease;
     overflow: hidden;
-    position: relative;
-
     display: flex;
     flex-direction: column;
+    z-index: 100;
 }
 
+/* Sidebar collapsed state */
 .sidebar.collapsed {
     width: 40px;
 }
 
+/* Toggle button */
 .toggle-btn {
     background-color: transparent;
     border: none;
@@ -24,10 +59,11 @@
     text-align: left;
 }
 
+/* Inner content in sidebar */
 .sidebar-content {
     background-color: #4ce0e6;
     border-radius: 20px;
-    flex: 1; /* This makes it expand vertically */
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -35,16 +71,14 @@
     margin: 10px;
 }
 
-.h1{
-    margin-right: 20px;
+/* Main page content to the right of sidebar */
+.content {
+    margin-left: 250px;
+    padding: 20px;
+    flex: 1;
+    transition: margin-left 0.3s ease;
 }
 
-header {
-    background-color: #5ce5eb;
-    text-align: left;
-    padding: auto;
-}
-
-header h1 {
-    font-size: 20px;
+.sidebar.collapsed ~ .content {
+    margin-left: 100px;
 }
