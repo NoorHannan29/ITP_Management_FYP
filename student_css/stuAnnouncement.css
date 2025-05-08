@@ -12,6 +12,7 @@
     flex: 1;
     padding: 40px;
     background-color: white;
+    text-align: center;
 }
 
 .announcement-title {
@@ -21,12 +22,15 @@
     display: inline-block;
     font-size: 18px;
     margin-bottom: 40px;
-    
-
 }
 
 .announcement-body {
     font-size: 20px;
-    text-align: left;
     margin-left: 20px;
+    text-align: center;
+    width: auto;
+    border: 1px solid #59e3e3; 
+    border-radius: 8px;        
+    background-color: transparent;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.1), 0 3px 10px 0 rgba(0,0,0,0.09);
 }

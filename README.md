@@ -10,6 +10,8 @@ A- Completed
 B- Partially Completed
 
 - Login Page (Base idea/front end done, make proper header/footer, add image, backend)
+- Student Announcement Display
+- Student Announcement
 
 C- Initialised/Small Changes
 
@@ -17,8 +19,6 @@ C- Initialised/Small Changes
 
 D- To be done
 
-- Student Announcement
-- Student Announcement Display
 - Application page
 - Application Status
 - Attendance Management
