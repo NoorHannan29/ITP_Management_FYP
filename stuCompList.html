@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./student_script/main.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="./student_css/main.css">
+    <link rel="stylesheet" href="./student_css/stuCompList.css">
+    <title>MASTER COMPANY LIST</title>
+</head>
+<body>
+
+    <header>
+        <h1>MASTER COMPANY LIST</h1>
+    </header>
+    <div class="main-layout">
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <button class="toggle-btn" onclick="toggleSidebar()">&#60; Hide</button>
+            <div class="sidebar-content">
+                <p onclick="window.location.href='main.html';" style="cursor: pointer; color: blue; text-decoration: underline;">HOME</p>
+            </div>
+        </div>
+
+        <!-- Company Search Area -->
+        <div class="content" id="content">
+            <div class="company-container">
+                
+                <!-- Top bar with title and search -->
+                <div class="top-bar">
+                    <div class="comp-title">List Of Companies</div>
+                    <input type="text" class="search-bar" placeholder="Search companies...">
+                </div>
+                
+                <!-- Company list body -->
+                <div class="comp-body">
+                    <p>List here</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

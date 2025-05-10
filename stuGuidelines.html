@@ -3,38 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Login Page</title>
+    <script src="./student_script/main.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="./student_css/main.css">
+    <link rel="stylesheet" href="./student_css/stuGuidelines.css">
+    <title>INDUSTRIAL TRAINING STUDENT GUIDELINES</title>
 </head>
 <body>
 
-    <h1>Welcome to Our Login Page</h1>
+    <header>
+        <h1>INDUSTRIAL TRAINING GUIDELINES</h1>
+    </header>
+    <div class="main-layout">
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <button class="toggle-btn" onclick="toggleSidebar()">&#60; Hide</button>
+            <div class="sidebar-content">
+                <p>Function 1</p>
+                
+            </div>
+        </div>
 
-    <label for="userId">User ID:</label>
-    <input type="text" id="userId" placeholder="Enter your ID">
-    <br><br>
-
-    <label for="password">Password:</label>
-    <input type="password" id="password" placeholder="Enter your password">
-    <br><br>
-
-    <button onclick="login()">Log In</button>
-    <br><br>
-
-    <!-- Placeholder button that redirects to the login page -->
-    <button onclick="window.location.href='main.html';">Go to Login Page</button>
-
-    <script>
-        function login() {
-            const userId = document.getElementById("userId").value;
-            const password = document.getElementById("password").value;
-
-            if (userId && password) {
-                alert("Login successful! Welcome, " + userId);
-            } else {
-                alert("Please enter both ID and password.");
-            }
-        }
-    </script>
-
+        <!-- Guidelines Box -->
+        <div class="content" id="content">
+            <div class="announcement-container">
+                <div class="guideline-title">STUDENT GUIDELINES</div>
+                <div class="guideline-body">
+                    <p>Guidelines here</p>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
 </body>
 </html>

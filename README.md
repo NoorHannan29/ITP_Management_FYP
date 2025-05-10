@@ -12,6 +12,8 @@ B- Partially Completed
 - Login Page (Base idea/front end done, make proper header/footer, add image, backend)
 - Student Announcement Display
 - Student Announcement
+- Guidelines
+- Company List
 
 C- Initialised/Small Changes
 
@@ -22,8 +24,6 @@ D- To be done
 - Application page
 - Application Status
 - Attendance Management
-- Company List
-- Guidelines
 - Log Book Manager
 - Supervisor ITP Students
 - Supervisor Eval
