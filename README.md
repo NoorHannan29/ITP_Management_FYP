@@ -14,6 +14,8 @@ B- Partially Completed
 - Student Announcement
 - Guidelines
 - Company List
+- Student registration
+- Application page
 
 C- Initialised/Small Changes
 
@@ -21,7 +23,6 @@ C- Initialised/Small Changes
 
 D- To be done
 
-- Application page
 - Application Status
 - Attendance Management
 - Log Book Manager
