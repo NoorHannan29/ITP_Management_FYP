@@ -16,6 +16,8 @@ B- Partially Completed
 - Company List
 - Student registration
 - Application page
+- Application Status
+- Log Book Manager
 
 C- Initialised/Small Changes
 
@@ -23,9 +25,7 @@ C- Initialised/Small Changes
 
 D- To be done
 
-- Application Status
 - Attendance Management
-- Log Book Manager
 - Supervisor ITP Students
 - Supervisor Eval
 - Supervisor Assign

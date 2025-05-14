@@ -1,0 +1,51 @@
+.content {
+    margin-left: 180px;
+    padding: 0;
+    width: calc(100% - 180px);
+    box-sizing: border-box;
+
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    min-height: calc(100vh - 60px);
+    background-color: #ffffff;
+}
+
+.logbook-container {
+    background-color: #ffffff;
+    width: 100%;
+    padding: 40px 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.logbook-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.log-btn {
+    background-color: #59e3e3;
+    border: none;
+    border-radius: 30px;
+    padding: 12px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.add-btn {
+    background-color: #b2f97d;
+}
+
+.logbook-body {
+    background-color: #59e3e3;
+    border-radius: 30px;
+    padding: 80px 40px;
+    flex: 1;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+}

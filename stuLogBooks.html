@@ -3,38 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Login Page</title>
+    <title>LOG BOOK PAGE</title>
+    <link rel="stylesheet" href="./student_css/main.css">
+    <link rel="stylesheet" href="./student_css/stuLogbook.css">
 </head>
 <body>
 
-    <h1>Welcome to Our Login Page</h1>
+    <!-- Header and Sidebar are handled by main.css -->
+    <header>
+        <h1>LOG BOOK PAGE</h1>
+    </header>
 
-    <label for="userId">User ID:</label>
-    <input type="text" id="userId" placeholder="Enter your ID">
-    <br><br>
+    <div class="main-layout">
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <button class="toggle-btn" onclick="toggleSidebar()">&#60; Hide</button>
+            <div class="sidebar-content">
+                <p onclick="window.location.href='main.html';" style="cursor: pointer; color: blue; text-decoration: underline;">HOME</p>
+            </div>
+        </div>
 
-    <label for="password">Password:</label>
-    <input type="password" id="password" placeholder="Enter your password">
-    <br><br>
+        <!-- Main Content -->
+        <div class="content" id="content">
+            <div class="logbook-container">
+                
+                <!-- Top Buttons -->
+                <div class="logbook-header">
+                    <button class="log-btn">Your Log Books</button>
+                    <button class="log-btn add-btn">Add new log book record...</button>
+                </div>
 
-    <button onclick="login()">Log In</button>
-    <br><br>
+                <!-- Logbook List Area -->
+                <div class="logbook-body">
+                    <p>List of log books</p>
+                </div>
 
-    <!-- Placeholder button that redirects to the login page -->
-    <button onclick="window.location.href='main.html';">Go to Login Page</button>
-
-    <script>
-        function login() {
-            const userId = document.getElementById("userId").value;
-            const password = document.getElementById("password").value;
-
-            if (userId && password) {
-                alert("Login successful! Welcome, " + userId);
-            } else {
-                alert("Please enter both ID and password.");
-            }
-        }
-    </script>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>
