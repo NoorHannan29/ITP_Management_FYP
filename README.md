@@ -18,18 +18,18 @@ B- Partially Completed
 - Application page
 - Application Status
 - Log Book Manager
+- Announcement creator
 
 C- Initialised/Small Changes
 
 - Main Page(student)
+- Attendance Management
 
 D- To be done
 
-- Attendance Management
 - Supervisor ITP Students
 - Supervisor Eval
 - Supervisor Assign
 - Supervisor List
 - Committee list
 - Application approval
-- Announcement creator
