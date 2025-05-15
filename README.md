@@ -19,6 +19,9 @@ B- Partially Completed
 - Application Status
 - Log Book Manager
 - Announcement creator
+- Committee list
+- Application approval
+- Supervisor List
 
 C- Initialised/Small Changes
 
@@ -30,6 +33,3 @@ D- To be done
 - Supervisor ITP Students
 - Supervisor Eval
 - Supervisor Assign
-- Supervisor List
-- Committee list
-- Application approval

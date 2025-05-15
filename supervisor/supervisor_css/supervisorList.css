@@ -1,0 +1,49 @@
+.supervisor-content {
+  flex: 1;
+  padding: 40px;
+  margin-left: 250px;
+  transition: margin-left 0.3s ease;
+}
+
+.sidebar.collapsed ~ .supervisor-content {
+  margin-left: 40px;
+}
+
+.rounded-label {
+  padding: 10px 20px;
+  background-color: #59e3e3;
+  border-radius: 20px;
+  font-size: 16px;
+  display: inline-block;
+  line-height: normal;
+  user-select: none;
+}
+
+.top-area {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.rounded-button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #59e3e3;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  display: flex;
+  justify-content: right;
+}
+
+.rounded-button:hover {
+  background-color: #3acaca;
+}
+
+.supervisor-list-box {
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  font-size: 18px;
+}
