@@ -1,0 +1,29 @@
+.rounded-label {
+  padding: 10px 20px;
+  background-color: #59e3e3;
+  color: white;
+  border-radius: 20px;
+  font-size: 16px;
+  display: inline-block;
+  line-height: normal;
+  user-select: none;
+}
+
+.announcement-content {
+  flex: 1;
+  padding: 20px;
+}
+
+.top-buttons {
+  margin-bottom: 20px;
+}
+
+.announcement-list-box {
+  background-color: #59e3e3;
+  border-radius: 30px;
+  padding: 40px;
+  min-height: 300px;
+  color: black;
+  text-align: center;
+  font-size: 18px;
+}
