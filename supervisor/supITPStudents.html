@@ -1,40 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Login Page</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>YOUR ITP STUDENTS</title>
+  <link rel="stylesheet" href="../student_css/main.css">
+  <link rel="stylesheet" href="./supervisor_css/supITPStudents.css">
+  <script src="../student_script/main.js" defer></script>
 </head>
 <body>
+  <header>
+    <h1 style="float: left;">(User name)</h1>
+    <h1 style="text-align: right;">YOUR ITP STUDENTS</h1>
+  </header>
 
-    <h1>Welcome to Our Login Page</h1>
+  <div class="main-layout">
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+      <button class="toggle-btn" onclick="toggleSidebar()">&#60; Hide</button>
+      <div class="sidebar-content">
+        <p>List of functions</p>
+      </div>
+    </div>
 
-    <label for="userId">User ID:</label>
-    <input type="text" id="userId" placeholder="Enter your ID">
-    <br><br>
+    <!-- Main Content -->
+    <div class="announcement-content">
+      <div class="top-buttons">
+        <div class="rounded-label">Student List</div>
+      </div>
 
-    <label for="password">Password:</label>
-    <input type="password" id="password" placeholder="Enter your password">
-    <br><br>
-
-    <button onclick="login()">Log In</button>
-    <br><br>
-
-    <!-- Placeholder button that redirects to the login page -->
-    <button onclick="window.location.href='main.html';">Go to Login Page</button>
-
-    <script>
-        function login() {
-            const userId = document.getElementById("userId").value;
-            const password = document.getElementById("password").value;
-
-            if (userId && password) {
-                alert("Login successful! Welcome, " + userId);
-            } else {
-                alert("Please enter both ID and password.");
-            }
-        }
-    </script>
-
+      <div class="announcement-list-box">
+        List of students
+      </div>
+    </div>
+  </div>
 </body>
 </html>
