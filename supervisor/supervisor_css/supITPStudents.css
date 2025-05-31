@@ -1,0 +1,31 @@
+.students-content {
+  margin-left: 250px;
+  padding: 20px;
+  transition: margin-left 0.3s ease;
+}
+
+.top-buttons {
+  margin-bottom: 20px;
+}
+
+.rounded-label {
+  display: inline-block;
+  background-color: #7deaff;
+  padding: 10px 30px;
+  border-radius: 25px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.students-list-box {
+  background-color: #5ee6ea;
+  padding: 40px;
+  border-radius: 25px;
+  text-align: center;
+  font-size: 18px;
+}
+
+/* For sidebar collapse behavior */
+.sidebar.collapsed + .students-content {
+  margin-left: 40px;
+}

@@ -1,0 +1,64 @@
+.evaluation-content {
+  margin-left: 250px;
+  padding: 20px;
+  transition: margin-left 0.3s ease;
+}
+
+.rounded-label {
+  display: inline-block;
+  background-color: #ffcf91;
+  padding: 10px 30px;
+  border-radius: 25px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.evaluation-form-box {
+  background-color: #fff0d6;
+  padding: 30px;
+  border-radius: 20px;
+  max-width: 600px;
+  margin-top: 20px;
+}
+
+.evaluation-form-box label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.evaluation-form-box input,
+.evaluation-form-box textarea,
+.evaluation-form-box select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+}
+
+.form-buttons {
+  margin-top: 25px;
+  text-align: right;
+}
+
+.submit-btn {
+  background-color: #ffa500;
+  color: white;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.submit-btn:hover {
+  background-color: #ff8800;
+  transform: scale(1.05);
+}
+
+/* Collapse adjustment */
+.sidebar.collapsed + .evaluation-content {
+  margin-left: 40px;
+}

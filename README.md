@@ -9,7 +9,7 @@ A- Completed
 
 B- Partially Completed
 
-- Login Page (Base idea/front end done, make proper header/footer, add image, backend)
+- Login Page
 - Student Announcement Display
 - Student Announcement
 - Guidelines
@@ -22,6 +22,9 @@ B- Partially Completed
 - Committee list
 - Application approval
 - Supervisor List
+- Supervisor ITP Students
+- Supervisor Assign
+- Supervisor Eval
 
 C- Initialised/Small Changes
 
@@ -29,7 +32,3 @@ C- Initialised/Small Changes
 - Attendance Management
 
 D- To be done
-
-- Supervisor ITP Students
-- Supervisor Eval
-- Supervisor Assign

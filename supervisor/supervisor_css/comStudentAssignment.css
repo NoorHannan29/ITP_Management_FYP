@@ -1,0 +1,31 @@
+.assignment-content {
+  margin-left: 250px;
+  padding: 20px;
+  transition: margin-left 0.3s ease;
+}
+
+.top-buttons {
+  margin-bottom: 20px;
+}
+
+.rounded-label {
+  display: inline-block;
+  background-color: #ffd580;
+  padding: 10px 30px;
+  border-radius: 25px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.assignment-list-box {
+  background-color: #ffe9b3;
+  padding: 40px;
+  border-radius: 25px;
+  text-align: center;
+  font-size: 18px;
+}
+
+/* Sidebar collapse behavior */
+.sidebar.collapsed + .assignment-content {
+  margin-left: 40px;
+}
