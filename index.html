@@ -15,16 +15,19 @@
     <main class="container">
         <section class="login-box">
             <h2>Welcome, User!</h2>
-            <label for="userId">User ID</label>
-            <input type="text" id="userId" placeholder="Enter your ID">
+            <!-- Updated to use PHP backend -->
+            <form method="POST" action="php_files/student_login.php">
+                <label for="userId">User ID</label>
+                <input type="text" id="userId" name="userId" placeholder="Enter your ID" required>
 
-            <label for="password">Password</label>
-            <input type="password" id="password" placeholder="Enter your password">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
 
-            <div class="button-group">
-                <button onclick="login()">LOG IN</button>
-                <button onclick="register()">REGISTER</button>
-            </div>
+                <div class="button-group">
+                    <button type="submit">LOG IN</button>
+                    <button type="button" onclick="register()">REGISTER</button>
+                </div>
+            </form>
         </section>
 
         <section class="info-box">
@@ -33,17 +36,6 @@
     </main>
 
     <script>
-        function login() {
-            const userId = document.getElementById("userId").value;
-            const password = document.getElementById("password").value;
-
-            if (userId && password) {
-                alert("Login successful! Welcome, " + userId);
-            } else {
-                alert("Please enter both ID and password.");
-            }
-        }
-
         function register() {
             alert("Redirecting to registration page...");
             window.location.href = "stuRegister.html";           
