@@ -5,11 +5,10 @@ An Industrial Training Management System made for my Final Year Project at MMU.
 Checklist of things to be done:
 A- Completed
 
--
+- Login Page(Can login with data inside the DB)
 
 B- Partially Completed
 
-- Login Page
 - Student Announcement Display
 - Student Announcement
 - Guidelines

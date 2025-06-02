@@ -24,3 +24,59 @@
     background-color: transparent;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.1), 0 3px 10px 0 rgba(0,0,0,0.09);
 }
+
+.announcement-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.announcement-table th,
+.announcement-table td {
+    border-bottom: 1px solid #ccc;
+    padding: 12px 20px;
+    text-align: left;
+}
+
+.announcement-table th {
+    background-color: #59e3e3;
+    color: #000;
+}
+
+.announcement-table td a {
+    text-decoration: none;
+    color: #0077cc;
+}
+
+.announcement-table td a:hover {
+    text-decoration: underline;
+}
+
+
+.announcement-item {
+    background-color: #f8f9fa;
+    border: 1px solid #59e3e3;
+    border-radius: 12px;
+    margin: 20px auto;
+    max-width: 800px;
+    padding: 20px;
+    text-align: left;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.announcement-item h3 {
+    margin-top: 0;
+    color: #0077b6;
+}
+
+.announcement-item p {
+    margin: 10px 0 15px 0;
+    color: #333;
+}
+
+.poster-info {
+    font-size: 14px;
+    color: #555;
+    font-style: italic;
+}
