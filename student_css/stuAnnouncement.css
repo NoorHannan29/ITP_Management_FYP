@@ -80,3 +80,19 @@
     color: #555;
     font-style: italic;
 }
+
+.announcement-row {
+    margin: 15px 0;
+    font-size: 18px;
+    text-align: left;
+}
+
+.announcement-link {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.announcement-link:hover {
+    text-decoration: underline;
+}

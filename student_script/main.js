@@ -8,7 +8,7 @@ function toggleSidebar() {
     if (sidebar.classList.contains("collapsed")) {
         content.style.marginLeft = "40px";
     } else {
-        content.style.marginLeft = "250px";
+        content.style.marginLeft = "50px";
     }
 }
 

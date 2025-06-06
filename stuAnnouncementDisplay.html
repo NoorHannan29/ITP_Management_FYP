@@ -4,6 +4,7 @@
     <title>ITMS System</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./student_script/announcementDisplay.js" defer></script>
     <script src="./student_script/main.js" type="text/javascript"></script>
     <link rel="stylesheet" href="./student_css/main.css">
     <link rel="stylesheet" href="./student_css/stuAnnouncementDisplay.css">
@@ -11,7 +12,7 @@
 
 <body>
     <header>
-        <h1>MMU ITPS SYSTEM</h1>
+        <h1>MMU ITMS SYSTEM</h1>
     </header>
 
     <div class="main-layout">
@@ -19,18 +20,28 @@
         <div class="sidebar" id="sidebar">
             <button class="toggle-btn" onclick="toggleSidebar()">&#60; Hide</button>
             <div class="sidebar-content">
-                <p>Function 1</p>
-                <p>Function 2</p>
-                <p>Function 3</p>
+                <h3>Student Pages</h3>
+                <ul class="sidebar-nav">
+                    <li><a href="main.html">Dashboard</a></li>
+                    <li><a href="stuAnnouncement.html">Announcements</a></li>
+                    <li><a href="stuProfile.html">Profile</a></li>
+                    <li><a href="stuApplication.html">Application For ITP</a></li>
+                    <li><a href="stuCompList.html">Company Listings</a></li>
+                    <li><a href="stuLogBooks.html">Logbook Management</a></li>
+                    <li><a href="stuGuidelines.html">Guidelines for ITP</a></li>
+                </ul>
             </div>
         </div>
+
 
         <!-- Announcement Content -->
         <div class="content" id="content">
             <div class="announcement-container">
-                <div class="announcement-title">ANNOUNCEMENT TITLE</div>
-                <div class="announcement-body">
-                    <p>Announcemen</p>
+                <div class="announcement-title" id="announcement-title">Loading title...</div>
+
+               </div>
+                <div class="announcement-body" id="announcement-content">
+                    Loading content...
                 </div>
             </div>
         </div>

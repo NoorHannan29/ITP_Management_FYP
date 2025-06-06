@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 $userId = $_POST['userId'];
 $password = $_POST['password'];
 
-$sql = "SELECT * FROM student WHERE Student_ID = ? AND Student_Password = ?";
+$sql = "SELECT * FROM student WHERE Student_ID = ? AND password = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("ss", $userId, $password);
 $stmt->execute();

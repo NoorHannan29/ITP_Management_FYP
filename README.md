@@ -6,11 +6,12 @@ Checklist of things to be done:
 A- Completed
 
 - Login Page(Can login with data inside the DB)
+- Student Announcement Display(Shows selected announcement)
+- Student Announcement(Shows test announcements)
 
 B- Partially Completed
 
-- Student Announcement Display
-- Student Announcement
+
 - Guidelines
 - Company List
 - Student registration

@@ -38,8 +38,48 @@ header h1 {
 .sidebar-content {
   background-color: #4ee6ed;
   border-radius: 20px;
-  text-align: center;
-  padding: 20px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sidebar-heading {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Increase vertical spacing between items */
+  list-style: none;
+  padding: 0;
+  margin-top: 20px; /* Optional: space below heading */
+}
+
+.sidebar-nav li {
+  width: 100%;
+}
+
+.sidebar-nav a {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  color: black;
+  background-color: #bdf5fa;
+  padding: 12px 20px; /* More padding for comfort */
+  border-radius: 10px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  font-weight: bold;
+  box-sizing: border-box;
+}
+
+.sidebar-nav a:hover {
+  background-color: #1ca4e0;
+  color: white;
 }
 
 .main-content {
@@ -109,7 +149,7 @@ header h1 {
   text-align: center;
 }
 
-/* Additional styles for sidebar collapsing and dynamic behavior */
+/* sidebar collapsing and dynamic behavior */
 .sidebar.collapsed {
   width: 40px;
   padding: 20px 5px;
@@ -123,7 +163,7 @@ header h1 {
 }
 
 #content {
-  margin-left: 250px;
+  margin-left: 50px;
   transition: margin-left 0.3s ease;
 }
 
