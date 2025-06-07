@@ -1,38 +1,39 @@
 <?php
-session_start();
+session_start(); // Start the session
+
 $host = "localhost";
-$db_user = "root";  // or your DB username
-$db_pass = "";      // or your DB password
-$db_name = "itp_system";  // change to your DB name
+$username = "root";
+$password = "";
+$database = "itp_system";
 
-$conn = new mysqli($host, $db_user, $db_pass, $db_name);
-
+$conn = new mysqli($host, $username, $password, $database);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
 $userId = $_POST['userId'];
-$password = $_POST['password'];
+$passwordInput = $_POST['password'];
 
-$sql = "SELECT * FROM student WHERE Student_ID = ? AND password = ?";
+$sql = "SELECT * FROM Student WHERE Student_ID = ? AND Password = ?";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("ss", $userId, $password);
+$stmt->bind_param("ss", $userId, $passwordInput);
 $stmt->execute();
 $result = $stmt->get_result();
 
 if ($result->num_rows === 1) {
-    $_SESSION['userId'] = $userId;
-    echo "<script>
-        alert('Welcome!');
-        setTimeout(function() {
-            window.location.href = '../main.html';}, 100); 
-        </script>";
-} 
-else {
-    echo "<script>alert('Invalid ID or Password.'); 
-    window.location.href = '../index.html';</script>";
+    $user = $result->fetch_assoc();
+    
+    // Store data in session
+    $_SESSION['student_id'] = $user['Student_ID'];
+    $_SESSION['student_name'] = $user['Student_Name'];
+    $_SESSION['student_program'] = $user['Student_Program'];
+    
+    // Redirect to main menu
+    header("Location: ../main.php");
+    exit();
+} else {
+    echo "Invalid ID or password!";
 }
 
-$stmt->close();
 $conn->close();
 ?>

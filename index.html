@@ -15,7 +15,6 @@
     <main class="container">
         <section class="login-box">
             <h2>Welcome, User!</h2>
-            <!-- Updated to use PHP backend -->
             <form method="POST" action="php_files/student_login.php">
                 <label for="userId">User ID</label>
                 <input type="text" id="userId" name="userId" placeholder="Enter your ID" required>
@@ -38,9 +37,19 @@
     <script>
         function register() {
             alert("Redirecting to registration page...");
-            window.location.href = "stuAnnouncement.html";           
+            window.location.href = "stuRegister.html";           
         }
     </script>
-
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('error') === '1') {
+            const message = document.createElement('p');
+            message.textContent = 'Please log in first.';
+            message.style.color = 'red';
+            message.style.textAlign = 'center';
+            message.style.marginTop = '20px';
+            document.body.insertBefore(message, document.body.firstChild);
+        }
+    </script>
 </body>
 </html>

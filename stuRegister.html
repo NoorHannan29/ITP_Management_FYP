@@ -13,16 +13,17 @@
         <h1>REGISTER FOR INDUSTRIAL TRAINING SYSTEM</h1>
     </header>
 
-    <form class="registration-form" onsubmit="event.preventDefault(); window.location.href='main.html'">
-        <input type="text" placeholder="Full Name">
-        <input type="text" placeholder="Student ID">
-        <input type="email" placeholder="Email Address">
-        <input type="password" placeholder="Password">
-        <input type="password" placeholder="Confirm Password">
-        <input type="text" placeholder="Program / Faculty">
-        <input type="tel" placeholder="Contact Number">
+    <form class="registration-form" action="./php_files/register.php" method="POST">
+        <input type="text" name="name" placeholder="Full Name" required>
+        <input type="text" name="student_id" placeholder="Student ID" required>
+        <input type="email" name="email" placeholder="Email Address" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+        <input type="text" name="program" placeholder="Program / Faculty" required>
+        <input type="tel" name="contact" placeholder="Contact Number" required>
         <button type="submit">Register</button>
     </form>
+
 
 </body>
 </html>

@@ -8,13 +8,13 @@ A- Completed
 - Login Page(Can login with data inside the DB)
 - Student Announcement Display(Shows selected announcement)
 - Student Announcement(Shows test announcements)
+- Company List(Shows available companies)
+- Student registration(registering new student possible)
 
 B- Partially Completed
 
-
 - Guidelines
-- Company List
-- Student registration
+
 - Application page
 - Application Status
 - Log Book Manager
@@ -25,10 +25,10 @@ B- Partially Completed
 - Supervisor ITP Students
 - Supervisor Assign
 - Supervisor Eval
+- Main Page(student)
 
 C- Initialised/Small Changes
 
-- Main Page(student)
 - Attendance Management
 
 D- To be done

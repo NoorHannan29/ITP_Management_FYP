@@ -1,0 +1,74 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['student_name'])) {
+    header("Location: index.html?error=1");
+    exit();
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Main Menu</title>
+  <link rel="stylesheet" href="./student_css/main.css">
+</head>
+<body>
+  <header>
+    <h1>Welcome, <?php echo htmlspecialchars($_SESSION['student_name']); ?>!</h1>
+    <h1>Main Menu</h1>
+    <button onclick="window.location.href='php_files/logout.php'" style="padding: 10px 20px; border-radius: 10px; background-color: white; border: none; font-weight: bold; cursor:pointer;">Log Out</button>
+  </header>
+
+  <div class="main-layout">
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+      <button class="toggle-btn" onclick="toggleSidebar()">&#60; Hide</button>
+      <div class="sidebar-content">
+        <h3>Student Pages</h3>
+        <ul class="sidebar-nav">
+          <li><a href="main.php">Dashboard</a></li>
+          <li><a href="stuAnnouncement.html">Announcements</a></li>
+          <li><a href="stuProfile.html">Profile</a></li>
+          <li><a href="stuApplication.html">Application For ITP</a></li>
+          <li><a href="stuCompList.html">Company Listings</a></li>
+          <li><a href="stuLogBooks.html">Logbook Management</a></li>
+          <li><a href="stuGuidelines.html">Guidelines for ITP</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Profile Section -->
+      <div class="profile-section">
+        <div class="profile-photo">Photo</div>
+        <div class="profile-info">
+          <div class="info-box"><?php echo htmlspecialchars($_SESSION['student_name']); ?></div>
+          <div class="info-box"><?php echo htmlspecialchars($_SESSION['student_program']); ?></div>
+        </div>
+      </div>
+
+      <!-- Alerts and Announcements -->
+      <div class="grid-section">
+        <div class="alert-box">
+          <h3>Alerts</h3>
+          <div class="list-placeholder">List of alerts</div>
+        </div>
+        <div class="announcement-box">
+          <h3>Announcements</h3>
+          <div class="list-placeholder">List of announcements</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.style.display = sidebar.style.display === 'none' ? 'block' : 'none';
+    }
+  </script>
+</body>
+</html>
