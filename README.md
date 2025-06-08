@@ -10,12 +10,12 @@ A- Completed
 - Student Announcement(Shows test announcements)
 - Company List(Shows available companies)
 - Student registration(registering new student possible)
+- Application page(Can make applications for ITP now)
 
 B- Partially Completed
 
 - Guidelines
 
-- Application page
 - Application Status
 - Log Book Manager
 - Announcement creator

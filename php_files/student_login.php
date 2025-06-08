@@ -1,15 +1,7 @@
 <?php
 session_start(); // Start the session
 
-$host = "localhost";
-$username = "root";
-$password = "";
-$database = "itp_system";
-
-$conn = new mysqli($host, $username, $password, $database);
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+require_once 'db_connect.php';
 
 $userId = $_POST['userId'];
 $passwordInput = $_POST['password'];
@@ -27,6 +19,8 @@ if ($result->num_rows === 1) {
     $_SESSION['student_id'] = $user['Student_ID'];
     $_SESSION['student_name'] = $user['Student_Name'];
     $_SESSION['student_program'] = $user['Student_Program'];
+    $_SESSION['student_email'] = $user['Student_email'];
+    $_SESSION['student_phone'] = $user['Student_Phone'];
     
     // Redirect to main menu
     header("Location: ../main.php");

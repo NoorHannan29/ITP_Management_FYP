@@ -13,14 +13,7 @@ if (!isset($_GET['id'])) {
 
 $announcementId = intval($_GET['id']);
 
-// Replace with your own DB credentials
-$conn = new mysqli("localhost", "root", "", "itp_system");
-
-if ($conn->connect_error) {
-    http_response_code(500);
-    echo json_encode(['error' => 'Database connection failed']);
-    exit;
-}
+require_once 'db_connect.php';
 
 $stmt = $conn->prepare("SELECT * FROM Announcements WHERE Announcement_ID = ?");
 $stmt->bind_param("i", $announcementId);
