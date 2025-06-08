@@ -11,13 +11,12 @@ A- Completed
 - Company List(Shows available companies)
 - Student registration(registering new student possible)
 - Application page(Can make applications for ITP now)
+- Log Book Manager(can create log book)
 
 B- Partially Completed
 
 - Guidelines
-
 - Application Status
-- Log Book Manager
 - Announcement creator
 - Committee list
 - Application approval
