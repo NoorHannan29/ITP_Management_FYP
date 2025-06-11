@@ -14,6 +14,8 @@ A- Completed
 - Log Book Manager(can create log book)
 - Application Status
 - Main Page(student)(shows everthing except for photo)
+- Supervisor Login
+- Supervisor ITP Students
 
 B- Partially Completed
 
@@ -22,7 +24,6 @@ B- Partially Completed
 - Committee list
 - Application approval
 - Supervisor List
-- Supervisor ITP Students
 - Supervisor Assign
 - Supervisor Eval
 
