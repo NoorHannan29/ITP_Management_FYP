@@ -16,6 +16,18 @@ $student_email = $_SESSION['student_email'] ?? '';
 $student_phone = $_SESSION['student_phone'] ?? '';
 $student_program = $_SESSION['student_program'] ?? '';
 
+$check_sql = "SELECT Application_ID FROM applications WHERE Student_ID = ?";
+$check_stmt = $conn->prepare($check_sql);
+$check_stmt->bind_param("s", $student_id);
+$check_stmt->execute();
+$check_stmt->store_result();
+
+if ($check_stmt->num_rows > 0) {
+    echo "<script>alert('You have already submitted an application. Redirecting to status page.'); window.location.href='stuApplStat.html';</script>";
+    exit();
+}
+$check_stmt->close();
+
 // If form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $company_name = $_POST['company_name'] ?? '';

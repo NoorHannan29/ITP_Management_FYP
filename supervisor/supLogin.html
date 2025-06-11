@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supervisor Log In</title>
+    <link rel="stylesheet" href="./supervisor_css/supLogin.css">
+</head>
+<body>
+
+<header>
+    <h1>SUPERVISOR / COMMITTEE LOG IN</h1>
+</header>
+
+<main class="container">
+    <section class="login-box">
+        <h2>Welcome, Supervisor!</h2>
+        <form method="POST" action="supervisor_php/supervisor_login.php">
+            <label for="userId">User ID</label>
+            <input type="text" id="userId" name="userId" placeholder="Enter your ID" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+            <div class="button-group">
+                <button type="submit">LOG IN</button>
+            </div>
+        </form>
+    </section>
+
+    <section class="info-box">
+        <p>Authorized staff only.<br>Please log in using your<br>supervisor credentials.</p>
+    </section>
+</main>
+
+<script>
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('error') === '1') {
+        const message = document.createElement('p');
+        message.textContent = 'Please log in first.';
+        message.style.color = 'red';
+        message.style.textAlign = 'center';
+        message.style.marginTop = '20px';
+        document.body.insertBefore(message, document.body.firstChild);
+    }
+</script>
+
+</body>
+</html>

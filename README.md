@@ -12,11 +12,12 @@ A- Completed
 - Student registration(registering new student possible)
 - Application page(Can make applications for ITP now)
 - Log Book Manager(can create log book)
+- Application Status
+- Main Page(student)(shows everthing except for photo)
 
 B- Partially Completed
 
 - Guidelines
-- Application Status
 - Announcement creator
 - Committee list
 - Application approval
@@ -24,7 +25,6 @@ B- Partially Completed
 - Supervisor ITP Students
 - Supervisor Assign
 - Supervisor Eval
-- Main Page(student)
 
 C- Initialised/Small Changes
 
