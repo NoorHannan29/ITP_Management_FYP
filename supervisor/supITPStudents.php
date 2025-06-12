@@ -11,7 +11,16 @@ require_once '../php_files/db_connect.php';
 $supervisor_id = $_SESSION['supervisor_id'];
 $supervisor_name = $_SESSION['supervisor_name'];
 
-// Fetch supervised students (assigned via student table after approval)
+// Check if supervisor is a committee member (based on Committee_ID)
+$sql = "SELECT Committee_ID FROM supervisor WHERE Supervisor_ID = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("s", $supervisor_id);
+$stmt->execute();
+$result = $stmt->get_result();
+$row = $result->fetch_assoc();
+$_SESSION['is_committee'] = !empty($row['Committee_ID']) ? 1 : 0;
+
+// Fetch supervised students
 $students = [];
 $has_alert = false;
 
@@ -60,10 +69,13 @@ $conn->close();
       <div class="sidebar-content">
         <ul class="sidebar-nav">
           <li><a href="supITPStudents.php">Dashboard</a></li>
-          <li><a href="supAnnouncement.html">Announcements</a></li>
-          <li><a href="supProfile.html">Profile</a></li>
-          <li><a href="supEvaluate.html">Evaluate Applications</a></li>
           <li><a href="supLogbookReview.html">Review Logbooks</a></li>
+          <li><a href="supEvaluate.html">Evaluate Students</a></li>
+
+          <?php if (!empty($_SESSION['is_committee'])): ?>
+            <li><a href="supAnnouncement.html">Announcements</a></li>
+            <li><a href="comApplication.php">Student Applictions</a></li>
+          <?php endif; ?>
         </ul>
       </div>
     </div>

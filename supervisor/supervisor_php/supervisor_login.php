@@ -20,6 +20,7 @@ if ($result->num_rows === 1) {
     $_SESSION['supervisor_name'] = $user['Supervisor_Name'];
     $_SESSION['supervisor_email'] = $user['Supervisor_Email'];
     $_SESSION['supervisor_phone'] = $user['Supervisor_Phone'];
+    $_SESSION['committee_id'] = $user['Committee_ID'];
     
     // Redirect to supervisor dashboard
     header("Location: ../supITPStudents.php");

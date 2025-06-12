@@ -1,0 +1,32 @@
+RAW: {"appID":2}
+Array
+(
+    [appID] => 2
+)
+Assigning supervisor 1 to student S1005
+RAW: {"appID":2}
+Array
+(
+    [appID] => 2
+)
+Assigning supervisor 1 to student S1005
+RAW: {"appID":2}
+Array
+(
+    [appID] => 2
+)
+Array
+(
+    [0] => Array
+        (
+            [Supervisor_ID] => 1
+            [Student_Count] => 1
+        )
+
+    [1] => Array
+        (
+            [Supervisor_ID] => 2
+            [Student_Count] => 0
+        )
+
+)
