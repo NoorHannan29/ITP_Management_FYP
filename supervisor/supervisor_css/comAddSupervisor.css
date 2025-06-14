@@ -1,0 +1,101 @@
+/* Base Styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f3f8fc;
+  margin: 20px;
+}
+
+header {
+  background-color: #2a6ea7;
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  margin: 0;
+}
+
+/* Container */
+.container {
+  max-width: 700px;
+  margin: 50px auto;
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Title */
+.container h2 {
+  text-align: center;
+  color: #2a6ea7;
+  margin-bottom: 30px;
+}
+
+/* Form Styles */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #2a6ea7;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select {
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+select {
+  background-color: white;
+}
+
+button[type="submit"] {
+  padding: 12px 20px;
+  background-color: #3db4f2;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #1ca4e0;
+}
+
+/* Success/Error Message */
+.message {
+  padding: 10px 15px;
+  border-radius: 10px;
+  margin-top: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.message.success {
+  background-color: #d4f8d4;
+  color: #256d25;
+}
+
+.message.error {
+  background-color: #ffe0e0;
+  color: #a33;
+}

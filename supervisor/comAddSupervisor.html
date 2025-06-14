@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="supervisor_css/comAddSupervisor.css">
+  <title>Add Supervisor</title>
+</head>
+<body>
+  <div class="container">
+  <h2>Add New Supervisor</h2>
+  <form method="POST" action="supervisor_php/addSupervisor.php">
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name" required>
+
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email" required>
+
+    <label for="phone">Phone Number</label>
+    <input type="text" name="phone" id="phone" required>
+
+    <label for="password">User Password</label>
+    <input type="password" name="password" id="password" required>
+
+    <label for="specialisation">Role</label>
+    <select name="specialisation" id="specialisation" required>
+      <option value="" disabled selected>Select your specialization</option>
+      <option value="Data Science">Data Science</option>
+      <option value="Cybersec">Cybersecurity</option>
+      <option value="Software Engineering">Software Engineering</option>
+      <option value="Networking">Networking</option>
+      <option value="Game Dev">Game Development</option>
+    </select>
+
+    <div style="display: flex; align-items: center; gap: 10px; margin-top: 10px;">
+      <input type="checkbox" id="isCommittee" name="isCommittee" onchange="toggleCommitteeFields()">
+      <label for="isCommittee">Committee Member?</label>
+    </div>
+
+    <div id="committeeFields" style="display: none; margin-top: 20px;">
+      <label for="committee_id">Committee ID</label>
+      <input type="text" name="committee_id" id="committee_id"></br>
+
+      <label for="role">Role</label>
+      <select name="role" id="role">
+        <option value="Member">Member</option>
+        <option value="Assistant Coordinator">Assistant Coordinator</option>
+        <option value="Deputy Coordinator">Deputy Coordinator</option>
+      </select>
+    </div>
+
+    <button type="submit">Add Supervisor</button>
+  </form>
+</div>
+
+</body>
+
+<script>
+  function toggleCommitteeFields() {
+    const isChecked = document.getElementById('isCommittee').checked;
+    const committeeFields = document.getElementById('committeeFields');
+    committeeFields.style.display = isChecked ? 'block' : 'none';
+  }
+</script>
+
+</html>

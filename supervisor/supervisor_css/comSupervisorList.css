@@ -1,0 +1,153 @@
+/* Base Styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f3f8fc;
+}
+
+header {
+  background-color: #2a6ea7;
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  margin: 0;
+}
+
+/* Layout */
+.main-layout {
+  display: flex;
+}
+
+/* Sidebar */
+.sidebar {
+  background-color: #3db4f2;
+  width: 200px;
+  min-height: 100vh;
+  padding-top: 50px;
+  position: relative;
+  transition: width 0.3s ease;
+  box-sizing: border-box;
+  z-index: 2;
+}
+
+.sidebar.collapsed {
+  width: 60px;
+}
+
+/* Toggle Button */
+.toggle-btn {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 999;
+  background-color: white;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  padding: 6px 10px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.toggle-btn:hover {
+  background-color: #eee;
+}
+
+/* Sidebar Content */
+.sidebar-content {
+  background-color: #4ee6ed;
+  border-radius: 20px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar.collapsed .sidebar-content {
+  opacity: 0;
+  pointer-events: none;
+  height: 0;
+  overflow: hidden;
+}
+
+.sidebar-nav {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sidebar-nav a {
+  display: block;
+  text-decoration: none;
+  color: black;
+  background-color: #bdf5fa;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-weight: bold;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.sidebar-nav a:hover {
+  background-color: #1ca4e0;
+  color: white;
+}
+
+/* Main Content */
+.main-content {
+  flex-grow: 1;
+  padding: 30px;
+  transition: margin-left 0.3s ease;
+  box-sizing: border-box;
+}
+
+.sidebar.collapsed ~ .main-content {
+  margin-left: 60px;
+}
+
+/* Table Styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+table th,
+table td {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+table th {
+  background-color: #4ee6ed;
+}
+
+table td strong {
+  color: red;
+}
+
+/* Add Button */
+.add-btn {
+  padding: 10px 20px;
+  background-color: #4ee6ed;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.add-btn:hover {
+  background-color: #1ca4e0;
+  color: white;
+}

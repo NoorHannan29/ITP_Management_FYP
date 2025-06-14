@@ -16,14 +16,14 @@ A- Completed
 - Main Page(student)(shows everthing except for photo)
 - Supervisor Login
 - Supervisor ITP Students
+- Application approval(denial and approval functional)
+- Add supervisor function, with committee option
+- Supervisor List(shows list with add function)
+- Guidelines
+- Announcement creator(Committee can now make announcements)
 
 B- Partially Completed
 
-- Guidelines
-- Announcement creator
-- Committee list
-- Application approval
-- Supervisor List
 - Supervisor Assign
 - Supervisor Eval
 

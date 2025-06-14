@@ -73,12 +73,14 @@ $conn->close();
           <li><a href="supEvaluate.html">Evaluate Students</a></li>
 
           <?php if (!empty($_SESSION['is_committee'])): ?>
-            <li><a href="supAnnouncement.html">Announcements</a></li>
+            <li><a href="comAnnouncements.php">Announcements</a></li>
             <li><a href="comApplication.php">Student Applictions</a></li>
+            <li><a href="comSupervisorList.html">List of Supervisors</a></li>
           <?php endif; ?>
         </ul>
       </div>
     </div>
+
 
     <!-- Main Content -->
     <div class="main-content">

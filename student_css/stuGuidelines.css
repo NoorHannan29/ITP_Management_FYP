@@ -1,28 +1,136 @@
+/* Main content area */
 .content {
     flex: 1;
-    padding: 40px;
-    background-color: white;
-    text-align: center;
+    padding: 50px 60px;
+    background-color: #fff;
+    text-align: left;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
 }
 
-.comp-title {
-    background-color: #59e3e3;
-    border-radius: 40px;
-    padding: 35px 30px;
+.guideline-title {
+    font-size: 28px;
+    font-weight: 600;
+    color: #226c7a;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-left: 6px solid #59e3e3;
+    padding: 8px 15px;
+    background-color: #f0fcfc;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+
+.guideline-section h2 {
+    font-size: 26px;
+    margin-bottom: 15px;
+    color: #226c7a;
+    border-bottom: 2px solid #59e3e3;
+    padding-bottom: 5px;
+}
+
+.guideline-section p,
+.guideline-section ul,
+.guideline-section ol {
     font-size: 18px;
     margin-bottom: 20px;
-
-    width: 30%;        
-    text-align: center;  
-    margin-left: 0;    
 }
 
-.comp-body {
-    font-size: 20px;
-    text-align: center;
+/* Nested lists styling */
+.guideline-section ul ul,
+.guideline-section ol ul {
+    margin-left: 20px;
+    list-style-type: circle;
+}
+
+/* Table styling */
+table {
     width: 100%;
-    border: 1px solid #59e3e3; 
-    border-radius: 8px;
-    background-color: transparent;
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.1), 0 3px 10px 0 rgba(0,0,0,0.09);
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+}
+
+table th,
+table td {
+    border: 1px solid #ccc;
+    padding: 12px 15px;
+    text-align: left;
+}
+
+table thead th {
+    background-color: #59e3e3;
+    color: #003b3b;
+}
+
+.callout {
+    background-color: #f9f9f9;
+    border-left: 5px solid #59e3e3;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.jump-button {
+    display: block;
+    width: 100%;
+    padding: 12px 20px;
+    margin: 20px 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    background-color: #226c7a;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.jump-button:hover {
+    background-color: #1a5466;
+}
+
+/* TLDR Section styling */
+.tldr-section {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #f0fcfc;
+    border-left: 6px solid #59e3e3;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.tldr-section h2 {
+    font-size: 26px;
+    margin-bottom: 15px;
+    color: #226c7a;
+    border-bottom: 2px solid #59e3e3;
+    padding-bottom: 5px;
+}
+
+.training-footer-message {
+  margin-top: 60px;
+  padding: 20px;
+  font-size: 22px;
+  text-align: center;
+  color: #226c7a;
+  background-color: #e6fafa;
+  border-radius: 10px;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  animation: pop-in 0.6s ease-out;
+}
+
+.clic-link {
+    color: #226c7a;
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 2px dotted #59e3e3;
+    transition: color 0.2s ease-in-out;
+}
+
+.clic-link:hover {
+    color: #1a5466;
+    text-decoration: underline;
 }

@@ -54,15 +54,17 @@ $conn->close();
         <ul class="sidebar-nav">
           <li><a href="supITPStudents.php">Dashboard</a></li>
           <li><a href="supLogbookReview.html">Review Logbooks</a></li>
-          <li><a href="supEvaluate.html">Evaluate Applications</a></li>
+          <li><a href="supEvaluate.html">Evaluate Students</a></li>
+
           <?php if (!empty($_SESSION['is_committee'])): ?>
-            <li><a href="comApplication.php">Pending Applications</a></li>
-            <li><a href="supAnnouncement.html">Announcements</a></li>
-            <li><a href="supProfile.html">Profile</a></li>
+            <li><a href="comAnnouncements.php">Announcements</a></li>
+            <li><a href="comApplication.php">Student Applictions</a></li>
+            <li><a href="comSupervisorList.html">List of Supervisors</a></li>
           <?php endif; ?>
         </ul>
       </div>
     </div>
+
 
     <!-- Main Content -->
     <div class="main-content">
