@@ -21,6 +21,7 @@ A- Completed
 - Supervisor List(shows list with add function)
 - Guidelines
 - Announcement creator(Committee can now make announcements)
+- Log book viewer for supervisor
 
 B- Partially Completed
 
@@ -32,5 +33,3 @@ C- Initialised/Small Changes
 - Attendance Management
 
 D- To be done
-
-- Log book viewer for supervisor

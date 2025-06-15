@@ -53,13 +53,13 @@ $conn->close();
       <div class="sidebar-content">
         <ul class="sidebar-nav">
           <li><a href="supITPStudents.php">Dashboard</a></li>
-          <li><a href="supLogbookReview.html">Review Logbooks</a></li>
+          <li><a href="supLogs.php">Review Logbooks</a></li>
           <li><a href="supEvaluate.html">Evaluate Students</a></li>
 
           <?php if (!empty($_SESSION['is_committee'])): ?>
             <li><a href="comAnnouncements.php">Announcements</a></li>
             <li><a href="comApplication.php">Student Applictions</a></li>
-            <li><a href="comSupervisorList.html">List of Supervisors</a></li>
+            <li><a href="comSupervisorList.php">List of Supervisors</a></li>
           <?php endif; ?>
         </ul>
       </div>
