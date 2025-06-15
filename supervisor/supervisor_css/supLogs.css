@@ -113,33 +113,6 @@ header h1 {
   margin-left: 60px;
 }
 
-.profile-section {
-  display: flex;
-  background-color: #3db4f2;
-  border-radius: 20px;
-  padding: 20px;
-  margin-bottom: 30px;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.profile-photo {
-  width: 150px;
-  height: 150px;
-  background-color: #4ee6ed;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 18px;
-  color: white;
-}
-
-.profile-info {
-  flex-grow: 1;
-  margin-left: 40px;
-}
-
 .info-box {
   background-color: #4ee6ed;
   padding: 10px 20px;

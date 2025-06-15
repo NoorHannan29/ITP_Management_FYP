@@ -85,7 +85,7 @@ $conn->close();
           </thead>
           <tbody>
             <?php foreach ($supervisors as $row): ?>
-              <tr>
+              <tr onclick="goToSupStudent('<?php echo $row['Supervisor_ID']; ?>')">
                 <td><?php echo htmlspecialchars($row['Supervisor_ID']); ?></td>
                 <td><?php echo htmlspecialchars($row['Supervisor_Name']); ?></td>
                 <td><?php echo htmlspecialchars($row['Supervisor_Email']); ?></td>
@@ -106,6 +106,10 @@ $conn->close();
     function toggleSidebar() {
       document.getElementById("sidebar").classList.toggle("collapsed");
     }
+
+  function goToSupStudent(supervisorId) {
+    window.location.href = 'comStudentAssignment.php?supervisor_id=' + supervisorId;
+  }
   </script>
 </body>
 </html>
