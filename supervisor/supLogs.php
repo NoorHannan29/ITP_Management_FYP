@@ -20,25 +20,21 @@ $result = $stmt->get_result();
 $row = $result->fetch_assoc();
 $_SESSION['is_committee'] = !empty($row['Committee_ID']) ? 1 : 0;
 
-// Fetch supervised students
-$students = [];
-$has_alert = false;
-
-$sql = "SELECT s.Student_ID, s.student_name, s.student_email, s.student_phone, a.Application_Status AS Status
-        FROM applications a
-        JOIN student s ON s.Student_ID = a.Student_ID
-        WHERE s.Supervisor_ID = ?";
+// Fetch logbook entries of supervised students
+$sql = "SELECT s.Student_ID, s.student_name, l.logbook_id, l.logbook_date, l.supervisor_viewed
+        FROM student s
+        JOIN logbook l ON s.Student_ID = l.student_id
+        WHERE s.Supervisor_ID = ?
+        ORDER BY l.logbook_date DESC";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $supervisor_id);
 $stmt->execute();
 $result = $stmt->get_result();
 
+$logs = [];
 while ($row = $result->fetch_assoc()) {
-    $row['Alert'] = ($row['Status'] === 'Pending');
-    if ($row['Alert']) $has_alert = true;
-    $students[] = $row;
+    $logs[] = $row;
 }
-
 $stmt->close();
 $conn->close();
 ?>
@@ -47,12 +43,15 @@ $conn->close();
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Supervisor Dashboard</title>
-  <link rel="stylesheet" href="supervisor_css/supITPStudents.css">
+  <title>Review Logbooks</title>
+  <link rel="stylesheet" href="supervisor_css/supLogs.css">
   <script>
     function toggleSidebar() {
       const sidebar = document.getElementById("sidebar");
       sidebar.classList.toggle("collapsed");
+    }
+    function goToLog(logbookId) {
+      window.location.href = 'supViewLog.php?logbook_id=' + logbookId;
     }
   </script>
 </head>
@@ -81,49 +80,36 @@ $conn->close();
       </div>
     </div>
 
-
     <!-- Main Content -->
     <div class="main-content">
-      <div class="profile-section">
-        <div class="profile-photo">Photo</div>
-        <div class="profile-info">
-          <div class="info-box"><?php echo htmlspecialchars($supervisor_name); ?></div>
-          <div class="info-box"><?php echo $has_alert ? 'You have an action that needs taking' : 'No action needed'; ?></div>
-        </div>
-      </div>
-
-      <div class="grid-section">
-        <div class="alert-box">
-          <h3>Your Supervised Students</h3>
-          <?php if (count($students) > 0): ?>
-              <table>
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>Status</th>
-                    <th>Alert</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php foreach ($students as $stu): ?>
-                    <tr>
-                      <td><?php echo htmlspecialchars($stu['Student_ID']); ?></td>
-                      <td><?php echo htmlspecialchars($stu['student_name']); ?></td>
-                      <td><?php echo htmlspecialchars($stu['student_email']); ?></td>
-                      <td><?php echo htmlspecialchars($stu['student_phone']); ?></td>
-                      <td><?php echo htmlspecialchars($stu['Status']); ?></td>
-                      <td><?php echo $stu['Alert'] ? '<strong>Pending Approval</strong>' : 'None'; ?></td>
-                    </tr>
-                  <?php endforeach; ?>
-                </tbody>
-              </table>
-          <?php else: ?>
-              <p>No supervised students found.</p>
-          <?php endif; ?>
-        </div>
+      <div class="logbook-section">
+        <h2>Student Logbook Entries</h2>
+        <?php if (count($logs) > 0): ?>
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Student ID</th>
+              <th>Student Name</th>
+              <th>Date</th>
+              <th>Viewed</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php $i = 1; foreach ($logs as $log): ?>
+            <tr onclick="goToLog('<?php echo $log['logbook_id']; ?>')">
+              <td><?php echo $i++; ?></td>
+              <td><?php echo htmlspecialchars($log['Student_ID']); ?></td>
+              <td><?php echo htmlspecialchars($log['student_name']); ?></td>
+              <td><?php echo htmlspecialchars($log['logbook_date']); ?></td>
+              <td><?php echo $log['supervisor_viewed'] ? 'Yes' : 'No'; ?></td>
+            </tr>
+            <?php endforeach; ?>
+          </tbody>
+        </table>
+        <?php else: ?>
+          <p>No logbook entries found.</p>
+        <?php endif; ?>
       </div>
     </div>
   </div>

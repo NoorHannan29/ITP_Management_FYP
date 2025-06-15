@@ -32,3 +32,5 @@ C- Initialised/Small Changes
 - Attendance Management
 
 D- To be done
+
+- Log book viewer for supervisor
