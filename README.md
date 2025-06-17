@@ -22,14 +22,13 @@ A- Completed
 - Guidelines
 - Announcement creator(Committee can now make announcements)
 - Log book viewer for supervisor
+- Supervisor Assign(Students can be assigned manually if need be)
+- Supervisor Eval
 
 B- Partially Completed
 
-- Supervisor Assign
-- Supervisor Eval
-
 C- Initialised/Small Changes
 
-- Attendance Management
+- Attendance Management(Removed)
 
 D- To be done

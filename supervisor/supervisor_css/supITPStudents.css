@@ -25,7 +25,7 @@ header h1 {
 
 /* Sidebar */
 .sidebar {
-  background-color: #3db4f2;
+  background-color: #2a6ea7;
   width: 200px;
   min-height: 100vh;
   padding-top: 50px;
@@ -60,7 +60,7 @@ header h1 {
 
 /* Sidebar Content */
 .sidebar-content {
-  background-color: #4ee6ed;
+  background-color: #3b84c3;
   border-radius: 20px;
   padding: 10px;
   display: flex;
@@ -88,8 +88,8 @@ header h1 {
 .sidebar-nav a {
   display: block;
   text-decoration: none;
-  color: black;
-  background-color: #bdf5fa;
+  color: white;
+  background-color: #2a6ea7;
   padding: 12px 20px;
   border-radius: 10px;
   font-weight: bold;
@@ -97,7 +97,7 @@ header h1 {
 }
 
 .sidebar-nav a:hover {
-  background-color: #1ca4e0;
+  background-color: #1c4c75;
   color: white;
 }
 
@@ -115,7 +115,7 @@ header h1 {
 
 .profile-section {
   display: flex;
-  background-color: #3db4f2;
+  background-color: #2a6ea7;
   border-radius: 20px;
   padding: 20px;
   margin-bottom: 30px;
@@ -126,7 +126,7 @@ header h1 {
 .profile-photo {
   width: 150px;
   height: 150px;
-  background-color: #4ee6ed;
+  background-color: #3b84c3;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -141,11 +141,12 @@ header h1 {
 }
 
 .info-box {
-  background-color: #4ee6ed;
+  background-color: #3b84c3;
   padding: 10px 20px;
   border-radius: 15px;
   margin-bottom: 10px;
   max-width: 400px;
+  color: white;
 }
 
 /* Students Section */
@@ -156,13 +157,14 @@ header h1 {
 }
 
 .alert-box {
-  background-color: #3db4f2;
+  background-color: #2a6ea7;
   border-radius: 20px;
   padding: 20px;
+  color: white;
 }
 
 .alert-box h3 {
-  background-color: #4ee6ed;
+  background-color: #3b84c3;
   padding: 10px;
   border-radius: 10px;
   margin-bottom: 15px;
@@ -181,10 +183,12 @@ table td {
   padding: 10px;
   border: 1px solid #ccc;
   text-align: center;
+  color: black; /* 👈 Add this line */
 }
 
 table th {
-  background-color: #4ee6ed;
+  background-color: #2a6ea7;
+  color: white;
 }
 
 table td strong {

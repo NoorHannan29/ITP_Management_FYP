@@ -35,6 +35,16 @@ while ($row = $result->fetch_assoc()) {
     $students[] = $row;
 }
 
+$stmt = $conn->prepare("SELECT Student_ID, student_name, student_program, Supervisor_ID 
+                        FROM student WHERE Supervisor_ID IS NULL");
+$stmt->execute();
+$unassigned_result = $stmt->get_result();
+
+$unassigned_students = [];
+while ($row = $unassigned_result->fetch_assoc()) {
+    $unassigned_students[] = $row;
+}
+
 $stmt->close();
 $conn->close();
 ?>
@@ -47,12 +57,13 @@ $conn->close();
   <title>Students Under Supervisor</title>
   <link rel="stylesheet" href="supervisor_css/comStudentAssignment.css">
   <script>
-    function addStudent(supervisorId) {
-      window.location.href = "comAddStudentManual.php?supervisor_id=" + supervisorId;
-    }
+  const currentSupervisorId = "<?php echo $supervisor_id; ?>";
   </script>
+<script src="supervisor_js/comStudentAssignment.js"></script>
+
+  <script src="supervisor_script/comStudentAssignment.js"></script>
 </head>
-<body>
+<body data-supervisor-id="<?php echo $supervisor_id; ?>">
   <header>
     <h1>Students Assigned to <?php echo htmlspecialchars($supervisor_name); ?></h1>
     <button onclick="window.location.href='php_files/logout.php'" style="float:right;">Log Out</button>
@@ -66,7 +77,7 @@ $conn->close();
         <ul class="sidebar-nav">
           <li><a href="supITPStudents.php">Dashboard</a></li>
           <li><a href="supLogs.php">Review Logbooks</a></li>
-          <li><a href="supEvaluate.html">Evaluate Students</a></li>
+          <li><a href="supEvaluationPage.php">Evaluate Students</a></li>
 
           <?php if (!empty($_SESSION['is_committee'])): ?>
             <li><a href="comAnnouncements.php">Announcements</a></li>
@@ -76,6 +87,7 @@ $conn->close();
         </ul>
       </div>
     </div>
+
 
     <!-- Main Content -->
     <div class="main-content">
@@ -114,7 +126,7 @@ $conn->close();
       <?php endif; ?>
     </div>
   </div>
-  <!-- Confirmation Modal -->
+  <!-- Confirmat Remove Modal -->
 <div id="confirmModal" class="modal" style="display:none;">
   <div class="modal-content">
     <p>Are you sure you want to remove this student from the supervisor?</p>
@@ -125,28 +137,34 @@ $conn->close();
   </div>
 </div>
 
-<script>
-  let pendingStudentId = null;
-  let pendingSupervisorId = null;
+<!-- Add Student Modal -->
+<div id="addStudentModal" class="modal" style="display: none;">
+  <div class="modal-content" style="width: 400px;">
+    <h3>Select Student to Assign</h3>
+    <select id="studentSelect" onchange="updateStudentDetails()" style="width: 100%; padding: 8px;">
+      <option value="">-- Select a student --</option>
+      <?php foreach ($unassigned_students as $student): ?>
+        <option value="<?php echo $student['Student_ID']; ?>"
+                data-name="<?php echo htmlspecialchars($student['student_name']); ?>"
+                data-program="<?php echo htmlspecialchars($student['student_program']); ?>"
+                data-supervisor="<?php echo $student['Supervisor_ID'] ?? '-'; ?>">
+          <?php echo $student['student_name']; ?> (<?php echo $student['Student_ID']; ?>)
+        </option>
+      <?php endforeach; ?>
+    </select>
 
-  function showConfirmation(studentId, supervisorId) {
-    pendingStudentId = studentId;
-    pendingSupervisorId = supervisorId;
-    document.getElementById("confirmModal").style.display = "flex";
-  }
+    <div id="studentDetails" style="margin-top: 20px; display: none;">
+      <p><strong>Student ID:</strong> <span id="detailID"></span></p>
+      <p><strong>Specialisation:</strong> <span id="detailProgram"></span></p>
+      <p><strong>Current Supervisor:</strong> <span id="detailSupervisor"></span></p>
+    </div>
 
-  function closeModal() {
-    document.getElementById("confirmModal").style.display = "none";
-    pendingStudentId = null;
-    pendingSupervisorId = null;
-  }
-
-  function confirmRemove() {
-    if (pendingStudentId && pendingSupervisorId) {
-      window.location.href = 'supervisor_php/removeStudentManual.php?student_id=' + pendingStudentId + '&supervisor_id=' + pendingSupervisorId;
-    }
-  }
-</script>
+    <div class="modal-actions">
+      <button class="confirm-btn" onclick="confirmAddStudent()">Assign</button>
+      <button class="cancel-btn" onclick="closeAddModal()">Cancel</button>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>

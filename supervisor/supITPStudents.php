@@ -70,7 +70,7 @@ $conn->close();
         <ul class="sidebar-nav">
           <li><a href="supITPStudents.php">Dashboard</a></li>
           <li><a href="supLogs.php">Review Logbooks</a></li>
-          <li><a href="supEvaluate.html">Evaluate Students</a></li>
+          <li><a href="supEvaluationPage.php">Evaluate Students</a></li>
 
           <?php if (!empty($_SESSION['is_committee'])): ?>
             <li><a href="comAnnouncements.php">Announcements</a></li>
