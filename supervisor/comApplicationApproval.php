@@ -83,7 +83,7 @@ $insurancePath = $data['Insurance_Letter_Path'];
 
           <?php if (!empty($_SESSION['is_committee'])): ?>
             <li><a href="comAnnouncements.php">Announcements</a></li>
-            <li><a href="comApplication.php">Student Applictions</a></li>
+            <li><a href="comApplication.php">Student Applications</a></li>
             <li><a href="comSupervisorList.php">List of Supervisors</a></li>
           <?php endif; ?>
         </ul>
