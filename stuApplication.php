@@ -7,9 +7,8 @@ if (!isset($_SESSION['student_id'])) {
     exit();
 }
 
-require_once './php_files/db_connect.php'; // Make sure this path is correct
+require_once './php_files/db_connect.php';
 
-// Auto-fill session data safely
 $student_id = $_SESSION['student_id'] ?? '';
 $student_name = $_SESSION['student_name'] ?? '';
 $student_email = $_SESSION['student_email'] ?? '';
@@ -28,7 +27,7 @@ if ($check_stmt->num_rows > 0) {
 }
 $check_stmt->close();
 
-// If form is submitted
+// Handle form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $company_name = $_POST['company_name'] ?? '';
     $company_address = $_POST['company_address'] ?? '';
@@ -45,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $identityType = $_POST['identity_type'] ?? null;
     $identityValue = $_POST['identity_value'] ?? null;
 
-
+    // Insert into applications
     $sql = "INSERT INTO applications 
             (Student_ID, Internship_Start_Date, Internship_End_Date, Allowance_Amount, Job_Description,
              Company_Name, Company_Address, Company_State, Company_Contact_Name, Company_Designation,
@@ -74,7 +73,59 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         );
 
         if ($stmt->execute()) {
-            echo "<script>alert('Application submitted successfully!'); window.location.href='main.php';</script>";
+            $applicationID = $conn->insert_id;
+
+            // Upload documents
+            $uploadDir = "uploads/app_docs/";
+            if (!file_exists($uploadDir)) {
+                mkdir($uploadDir, 0777, true);
+            }
+
+            function saveFile($fileKey, $prefix, $appID) {
+                global $uploadDir;
+
+                if (!isset($_FILES[$fileKey]) || $_FILES[$fileKey]['error'] !== UPLOAD_ERR_OK) {
+                    return null;
+                }
+
+                $allowedTypes = ['pdf', 'doc', 'docx', 'jpg', 'jpeg', 'png'];
+                $maxSize = 10 * 1024 * 1024; // 2MB
+
+                $fileInfo = $_FILES[$fileKey];
+                $ext = strtolower(pathinfo($fileInfo['name'], PATHINFO_EXTENSION));
+                if (!in_array($ext, $allowedTypes)) {
+                    return null;
+                }
+
+                if ($fileInfo['size'] > $maxSize || $fileInfo['size'] < 1000) { // Optional: min 1KB
+                    return null;
+                }
+
+                $fileName = $prefix . "_App" . $appID . "." . $ext;
+                $filePath = $uploadDir . $fileName;
+
+                if (move_uploaded_file($fileInfo['tmp_name'], $filePath)) {
+                    return $filePath;
+                }
+                return null;
+            }
+
+
+
+            $offerPath = saveFile('offer_letter', 'OfferLetter', $applicationID);
+            $undertakingPath = saveFile('undertaking_letter', 'UndertakingLetter', $applicationID);
+            $insurancePath = saveFile('insurance_letter', 'InsuranceLetter', $applicationID);
+
+            // Insert document paths
+            $docSQL = "INSERT INTO application_documents 
+                (Application_ID, Offer_Letter_Path, Undertaking_Letter_Path, Insurance_Letter_Path) 
+                VALUES (?, ?, ?, ?)";
+            $docStmt = $conn->prepare($docSQL);
+            $docStmt->bind_param("isss", $applicationID, $offerPath, $undertakingPath, $insurancePath);
+            $docStmt->execute();
+            $docStmt->close();
+
+            echo "<script>alert('Application and documents submitted successfully!'); window.location.href='main.php';</script>";
         } else {
             echo "<script>alert('Error submitting application. Please try again.');</script>";
         }
@@ -82,6 +133,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo "<script>alert('Database error.');</script>";
     }
+
     $conn->close();
 }
 ?>
@@ -119,7 +171,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <!-- Form Content -->
     <div class="content" id="content">
-        <form class="registration-form" method="POST" action="stuApplication.php">
+        <form class="registration-form" method="POST" action="stuApplication.php" enctype="multipart/form-data">
             <!-- Pre-filled Student Info -->
             <input type="text" name="student_name" value="<?php echo $student_name; ?>" readonly placeholder="Full Name">
             <input type="text" name="student_id" value="<?php echo $student_id; ?>" readonly placeholder="Student ID">
@@ -174,6 +226,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="email" name="company_email" placeholder="Email">
             <input type="url" name="company_website" placeholder="Website">
 
+            <h3 style="margin-top: 20px; border-top: 2px solid #ccc; padding-top: 10px;">📎 Upload Supporting Documents</h3>
+            <p style="margin-bottom: 10px;">Supported file types: PDF, DOC, DOCX, JPG, PNG. Max file size: 10MB each.</p>
+
+            <label for="offer_letter">Upload Offer Letter:</label>
+            <input type="file" name="offer_letter" id="offer_letter" accept=".pdf,.doc,.docx,.jpg,.png" required>
+
+            <label for="undertaking_letter">Upload Letter of Undertaking:</label>
+            <input type="file" name="undertaking_letter" id="undertaking_letter" accept=".pdf,.doc,.docx,.jpg,.png" required>
+
+            <label for="insurance_letter">Upload Insurance Letter:</label>
+            <input type="file" name="insurance_letter" id="insurance_letter" accept=".pdf,.doc,.docx,.jpg,.png" required>
+
             <button type="submit">Submit Application</button>
         </form>
     </div>
@@ -208,6 +272,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             identityValueInput.value = merged;
             }
         });
+        });
+
+        document.querySelector("form").addEventListener("submit", function (e) {
+        const maxSize = 10 * 1024 * 1024; // 2MB
+        const allowedTypes = ["application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "image/jpeg", "image/png"];
+
+        const fileFields = ["offer_letter", "undertaking_letter", "insurance_letter"];
+
+        for (let field of fileFields) {
+            const fileInput = document.getElementById(field);
+            const file = fileInput.files[0];
+
+            if (!file) continue;
+
+            if (file.size > maxSize) {
+            alert(`${field.replace('_', ' ')} exceeds 2MB limit.`);
+            e.preventDefault();
+            return;
+            }
+
+            if (!allowedTypes.includes(file.type)) {
+            alert(`${field.replace('_', ' ')} is not an accepted file type.`);
+            e.preventDefault();
+            return;
+            }
+        }
         });
         </script>
 </div>

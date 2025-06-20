@@ -24,10 +24,13 @@ $sql = "SELECT
             a.Internship_Start_Date, a.Internship_End_Date, a.Allowance_Amount, a.Job_Description,
             a.Company_Name, a.Company_Address, a.Company_State,
             a.Company_Contact_Name, a.Company_Designation, a.Company_Phone, a.Company_Email, a.Company_Website,
-            s.Student_ID, s.student_name, s.student_email, s.student_phone, s.student_program, s.student_specialisation
+            s.Student_ID, s.student_name, s.student_email, s.student_phone, s.student_program, s.student_specialisation,
+            d.Offer_Letter_Path, d.Undertaking_Letter_Path, d.Insurance_Letter_Path
         FROM applications a
         JOIN student s ON s.Student_ID = a.Student_ID
+        LEFT JOIN application_documents d ON a.Application_ID = d.Application_ID
         WHERE a.Application_ID = ?";
+
 
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $app_id);
@@ -41,6 +44,11 @@ if ($result->num_rows === 0) {
 
 $data = $result->fetch_assoc();
 $conn->close();
+
+$offerPath = $data['Offer_Letter_Path'];
+$undertakingPath = $data['Undertaking_Letter_Path'];
+$insurancePath = $data['Insurance_Letter_Path'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -126,6 +134,32 @@ $conn->close();
         <div class="form-field"><strong>Email:</strong> <?= htmlspecialchars($data['Company_Email']) ?></div>
         <div class="form-field"><strong>Website:</strong> <?= htmlspecialchars($data['Company_Website']) ?></div>
 
+        <hr>
+        <h3>Uploaded Documents</h3>
+        <div class="form-field">
+          <?php if (!empty($offerPath)): ?>
+            <button onclick="window.open('<?= htmlspecialchars('../' . $offerPath) ?>', '_blank')" class="download-btn">
+              📄 Offer Letter
+            </button>
+          <?php endif; ?>
+
+          <?php if (!empty($undertakingPath)): ?>
+            <button onclick="window.open('<?= htmlspecialchars('../' . $undertakingPath) ?>', '_blank')" class="download-btn">
+              📄 Letter of Undertaking
+            </button>
+          <?php endif; ?>
+
+          <?php if (!empty($insurancePath)): ?>
+            <button onclick="window.open('<?= htmlspecialchars('../' . $insurancePath) ?>', '_blank')" class="download-btn">
+              📄 Insurance Letter
+            </button>
+          <?php endif; ?>
+
+          <?php if (empty($offerPath) && empty($undertakingPath) && empty($insurancePath)): ?>
+            <p style="color: red;">No uploaded documents found.</p>
+          <?php endif; ?>
+        </div>
+        
         <div class="approval-buttons">
           <button class="approve-btn" onclick="submitApproval(<?= $app_id ?>)">Approve</button>
           <button class="deny-btn" onclick="openDenyPopup()">Deny</button>

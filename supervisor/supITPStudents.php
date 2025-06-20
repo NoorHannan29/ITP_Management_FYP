@@ -59,7 +59,7 @@ $conn->close();
 <body>
   <header>
     <h1>Welcome, <?php echo htmlspecialchars($supervisor_name); ?>!</h1>
-    <button onclick="window.location.href='php_files/logout.php'" style="padding: 10px 20px; border-radius: 10px; background-color: white; border: none; font-weight: bold; cursor:pointer;">Log Out</button>
+    <button onclick="window.location.href='../php_files/logout.php'" style="padding: 10px 20px; border-radius: 10px; background-color: white; border: none; font-weight: bold; cursor:pointer;">Log Out</button>
   </header>
 
   <div class="main-layout">
