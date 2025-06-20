@@ -1,83 +1,86 @@
 .content {
-    margin-left: 180px;
-    padding: 0;
-    width: calc(100% - 180px);
-    box-sizing: border-box;
-
-    display: flex;
-    justify-content: center;
-    align-items: stretch;
-    min-height: calc(100vh - 60px);
-    background-color: #ffffff;
+  flex-grow: 1;
+  padding: 30px;
+  background-color: #f5f9ff;
+  display: flex;
+  justify-content: center; 
 }
 
+/* Layout container */
 .logbook-container {
-    background-color: #ffffff;
-    width: 100%;
-    padding: 40px 60px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  width: 100%;
+  max-width: 900px; 
+  background-color: #f0f6ff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.05);
 }
 
+
+/* Header with Add Button */
 .logbook-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
-.log-btn {
-    background-color: #59e3e3;
-    border: none;
-    border-radius: 30px;
-    padding: 12px 30px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
+.logbook-header h2 {
+  margin: 0;
 }
 
-.add-btn {
-    background-color: #b2f97d;
+/* Add Logbook Button */
+.add-logbook-button {
+  padding: 10px 20px;
+  background-color: #2a6ea7;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
-.logbook-body {
-    background-color: #59e3e3;
-    border-radius: 30px;
-    padding: 80px 40px;
-    flex: 1;
-    text-align: center;
-    font-size: 18px;
-    font-weight: bold;
+.add-logbook-button:hover {
+  background-color: #1c4c75;
 }
 
-.log-entry {
-    background: white;
-    padding: 20px;
-    margin-bottom: 15px;
-    border-radius: 10px;
-    box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+/* Table Styles */
+.logbook-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Popup Styling */
-.popup-overlay {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    display: flex; justify-content: center; align-items: center;
-    z-index: 1000;
+.logbook-table th,
+.logbook-table td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  text-align: left;
+  font-size: 14px;
 }
-.popup-form {
-    background: #fff;
-    padding: 30px;
-    border-radius: 12px;
-    width: 400px;
-    max-width: 90%;
+
+.logbook-table th {
+  background-color: #2a6ea7;
+  color: white;
 }
-.popup-form textarea, .popup-form input {
-    width: 100%;
-    margin-top: 10px;
-    padding: 10px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
+
+.logbook-table td:nth-child(3) {
+  max-width: 400px;
+  word-wrap: break-word;
+}
+
+
+/* Status Tags */
+.status-viewed {
+  color: green;
+  font-weight: bold;
+}
+
+.status-pending {
+  color: red;
+  font-weight: bold;
 }

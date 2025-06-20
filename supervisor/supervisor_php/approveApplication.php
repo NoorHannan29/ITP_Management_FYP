@@ -47,6 +47,7 @@ if ($result->num_rows === 0) {
 $row = $result->fetch_assoc();
 $studentID = $row['Student_ID'];
 $specialization = $row['student_specialisation'];
+
 $stmt->close();
 
 // Step 2: Find matching supervisors and select one with the fewest students
@@ -108,6 +109,45 @@ $assignStmt->bind_param("is", $assignedSupervisorID, $studentID);
 $assignStmt->execute();
 $assignStmt->close();
 
+// Set student allowance based on application value
+$allowanceSql = "SELECT Allowance_Amount FROM applications WHERE Application_ID = ?";
+$allowanceStmt = $conn->prepare($allowanceSql);
+$allowanceStmt->bind_param("i", $appID);
+$allowanceStmt->execute();
+$allowanceResult = $allowanceStmt->get_result();
+
+if ($allowanceResult->num_rows > 0) {
+    $allowanceRow = $allowanceResult->fetch_assoc();
+    $allowance = $allowanceRow['Allowance_Amount'];
+
+    $updateAllowanceSql = "UPDATE student SET student_allowance = ? WHERE Student_ID = ?";
+    $updateAllowanceStmt = $conn->prepare($updateAllowanceSql);
+    $updateAllowanceStmt->bind_param("ds", $allowance, $studentID); // d = double, s = string
+    $updateAllowanceStmt->execute();
+    $updateAllowanceStmt->close();
+}
+$allowanceStmt->close();
+
+//INSERT IDENTITY TYPE
+$identitySql = "SELECT Student_Identity_Type, Student_Identity_Value FROM applications WHERE Application_ID = ?";
+$identityStmt = $conn->prepare($identitySql);
+$identityStmt->bind_param("i", $appID);
+$identityStmt->execute();
+$identityResult = $identityStmt->get_result();
+
+if ($identityResult->num_rows > 0) {
+    $identityRow = $identityResult->fetch_assoc();
+    $identityType = $identityRow['Student_Identity_Type'];
+    $identityValue = $identityRow['Student_Identity_Value'];
+
+    // Update student table
+    $updateIdentitySql = "UPDATE student SET Student_Identity_Type = ?, Student_Identity_Value = ? WHERE Student_ID = ?";
+    $updateIdentityStmt = $conn->prepare($updateIdentitySql);
+    $updateIdentityStmt->bind_param("sss", $identityType, $identityValue, $studentID);
+    $updateIdentityStmt->execute();
+    $updateIdentityStmt->close();
+}
+$identityStmt->close();
 
 $conn->close();
 

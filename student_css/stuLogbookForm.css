@@ -1,0 +1,44 @@
+.form-section {
+  padding: 30px;
+  background-color: #f5f9ff;
+  border-radius: 15px;
+}
+
+.logbook-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 700px;
+}
+
+.logbook-form label {
+  font-weight: bold;
+}
+
+.logbook-form input[type="text"],
+.logbook-form input[type="number"],
+.logbook-form input[type="date"],
+.logbook-form textarea {
+  padding: 8px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.submit-button {
+  padding: 12px 25px;
+  background-color: #2a6ea7;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  align-self: flex-start;
+}
+
+.submit-button:hover {
+  background-color: #1c4c75;
+}

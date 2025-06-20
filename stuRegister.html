@@ -19,7 +19,27 @@
         <input type="email" name="email" placeholder="Email Address" required>
         <input type="password" name="password" placeholder="Password" required>
         <input type="password" name="confirm_password" placeholder="Confirm Password" required>
-        <input type="text" name="program" placeholder="Program / Faculty" required>
+        <label for="program">Program / Faculty:</label>
+        <select name="program" id="program" required>
+            <option value="">-- Select Program / Faculty --</option>
+            <option value="Faculty of Computing and Informatics (FCI)">Faculty of Computing and Informatics (FCI)</option>
+            <option value="Faculty of Management (FOM)">Faculty of Management (FOM)</option>
+            <option value="Faculty of Engineering (FOE)">Faculty of Engineering (FOE)</option>
+            <option value="Faculty of Creative Multimedia (FCM)">Faculty of Creative Multimedia (FCM)</option>
+            <option value="Faculty of Information Science and Technology (FIST)">Faculty of Information Science and Technology (FIST)</option>
+            <option value="Faculty of Business (FOB)">Faculty of Business (FOB)</option>
+            <option value="Other">Other</option>
+        </select>
+        <label for="specialisation">Specialisation:</label>
+        <select name="specialisation" id="specialisation" required>
+            <option value="">-- Select Specialisation --</option>
+            <option value="Data Science">Data Science</option>
+            <option value="Cybersec">Cybersecurity</option>
+            <option value="Game Dev">Game Development</option>
+            <option value="AI">Artificial Intelligence</option>
+            <option value="Software Dev">Software Development</option>
+        </select>
+
         <input type="tel" name="contact" placeholder="Contact Number" required>
         <button type="submit">Register</button>
     </form>

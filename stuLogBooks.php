@@ -48,40 +48,56 @@ $result = $stmt->get_result();
         <div class="logbook-container">
             <div class="logbook-header">
                 <h2>Your Log Books</h2>
-                <button class="log-btn add-btn" onclick="openLogbookPopup()">+ Add Entry</button>
+                <button onclick="window.location.href='stuCreateLogbook.php'" class="add-logbook-button">+ Add New Logbook</button>
             </div>
 
             <div class="logbook-body">
-                <?php if ($result->num_rows > 0): ?>
-                    <?php while ($row = $result->fetch_assoc()): ?>
-                        <div class="log-entry">
-                            <strong><?php echo htmlspecialchars($row['Logbook_Date']); ?></strong><br>
-                            <?php echo nl2br(htmlspecialchars($row['Logbook_Content'] ?? 'No content yet.')); ?>
-                            <small><?php echo $row['Supervisor_Viewed'] ? 'Viewed by supervisor' : 'Not yet viewed'; ?></small>
-                        </div>
+            <?php if ($result->num_rows > 0): ?>
+                <table class="logbook-table">
+                <thead>
+                    <tr>
+                    <th>No.</th>
+                    <th>Date</th>
+                    <th>Tasks Summary</th>
+                    <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php 
+                    $count = 1;
+                    while ($row = $result->fetch_assoc()): 
+                        $fullTask = $row['Tasks_Done'] ?? 'No content';
+                        $taskPreview = strlen($fullTask) > 80 
+                                        ? substr($fullTask, 0, 80) . '...'
+                                        : $fullTask;
+                    ?>
+                    <tr>
+                        <td><?php echo $count++; ?></td>
+                        <td><?php echo htmlspecialchars($row['Logbook_Date']); ?></td>
+                        <td>
+                        <a href="stuViewLog.php?id=<?php echo $row['Logbook_ID']; ?>">
+                            <?php echo htmlspecialchars($taskPreview); ?>
+                        </a>
+                        </td>
+                        <td>
+                        <?php if ($row['Supervisor_Viewed']): ?>
+                            <span class="status-viewed">Viewed by Supervisor ✅</span>
+                        <?php else: ?>
+                            <span class="status-pending">Not Viewed ❌</span>
+                        <?php endif; ?>
+                        </td>
+                    </tr>
                     <?php endwhile; ?>
-                <?php else: ?>
-                    <p>No logbook entries found.</p>
-                <?php endif; ?>
+                </tbody>
+                </table>
+            <?php else: ?>
+                <p>No logbook entries found.</p>
+            <?php endif; ?>
             </div>
+
         </div>
     </div>
 </div>
 
-<!-- Popup -->
-<div class="popup-overlay" id="popupOverlay" style="display:none;">
-    <div class="popup-form">
-        <h3>New Logbook Entry</h3>
-        <form action="./php_files/add_logbook.php" method="POST">
-            <label>Date:</label>
-            <input type="date" name="log_date" value="<?php echo date('Y-m-d'); ?>" required>
-            <label>Content:</label>
-            <textarea name="logbook_content" rows="6" required></textarea>
-            <br>
-            <button type="submit" class="log-btn">Submit</button>
-            <button type="button" class="log-btn" onclick="closeLogbookPopup()">Cancel</button>
-        </form>
-    </div>
-</div>
 </body>
 </html>

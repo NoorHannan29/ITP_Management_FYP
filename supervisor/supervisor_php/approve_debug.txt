@@ -50,3 +50,103 @@ Array
         )
 
 )
+RAW: {"appID":3}
+Array
+(
+    [appID] => 3
+)
+RAW: {"appID":4}
+Array
+(
+    [appID] => 4
+)
+RAW: {"appID":5}
+Array
+(
+    [appID] => 5
+)
+RAW: {"appID":6}
+Array
+(
+    [appID] => 6
+)
+RAW: {"appID":7}
+Array
+(
+    [appID] => 7
+)
+Array
+(
+    [0] => Array
+        (
+            [Supervisor_ID] => 1
+            [Student_Count] => 1
+        )
+
+    [1] => Array
+        (
+            [Supervisor_ID] => 2
+            [Student_Count] => 1
+        )
+
+)
+RAW: {"appID":7}
+Array
+(
+    [appID] => 7
+)
+Array
+(
+    [0] => Array
+        (
+            [Supervisor_ID] => 1
+            [Student_Count] => 2
+        )
+
+    [1] => Array
+        (
+            [Supervisor_ID] => 2
+            [Student_Count] => 1
+        )
+
+)
+RAW: {"appID":8}
+Array
+(
+    [appID] => 8
+)
+Array
+(
+    [0] => Array
+        (
+            [Supervisor_ID] => 1
+            [Student_Count] => 1
+        )
+
+    [1] => Array
+        (
+            [Supervisor_ID] => 2
+            [Student_Count] => 1
+        )
+
+)
+RAW: {"appID":9}
+Array
+(
+    [appID] => 9
+)
+Array
+(
+    [0] => Array
+        (
+            [Supervisor_ID] => 1
+            [Student_Count] => 1
+        )
+
+    [1] => Array
+        (
+            [Supervisor_ID] => 2
+            [Student_Count] => 1
+        )
+
+)

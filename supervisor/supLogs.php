@@ -73,7 +73,7 @@ $conn->close();
 
           <?php if (!empty($_SESSION['is_committee'])): ?>
             <li><a href="comAnnouncements.php">Announcements</a></li>
-            <li><a href="comApplication.php">Student Applictions</a></li>
+            <li><a href="comApplication.php">Student Applications</a></li>
             <li><a href="comSupervisorList.php">List of Supervisors</a></li>
           <?php endif; ?>
         </ul>
@@ -102,7 +102,7 @@ $conn->close();
               <td><?php echo htmlspecialchars($log['Student_ID']); ?></td>
               <td><?php echo htmlspecialchars($log['student_name']); ?></td>
               <td><?php echo htmlspecialchars($log['logbook_date']); ?></td>
-              <td><?php echo $log['supervisor_viewed'] ? 'Yes' : 'No'; ?></td>
+              <td><?php echo $log['supervisor_viewed'] ? '✅Yes' : '❌No'; ?></td>
             </tr>
             <?php endforeach; ?>
           </tbody>

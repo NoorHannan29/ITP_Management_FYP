@@ -45,3 +45,14 @@ body {
         .registration-form button:hover {
             background-color: #45c5c5;
         }
+
+        .registration-form select {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        }
+

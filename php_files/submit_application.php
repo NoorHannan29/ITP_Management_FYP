@@ -22,6 +22,9 @@ $email = $_POST['company_email'] ?? null;
 $website = $_POST['company_website'] ?? null;
 $job_description = $_POST['job_description'] ?? null;
 $allowance = $_POST['allowance'] !== "" ? $_POST['allowance'] : null;
+$identityType = $_POST['identity_type'] ?? null;
+$identityValue = $_POST['identity_value'] ?? null;
+
 
 // Insert query
 $sql = "INSERT INTO applications (
@@ -37,8 +40,11 @@ $sql = "INSERT INTO applications (
     Company_Designation,
     Company_Phone,
     Company_Email,
-    Company_Website
-) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    Company_Website, 
+    Student_Identity_Type, 
+    Student_Identity_Value
+    )
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 $stmt = $conn->prepare($sql);
 if ($stmt === false) {
@@ -59,7 +65,9 @@ $stmt->bind_param(
     $designation,
     $phone,
     $email,
-    $website
+    $website,
+    $identityType,
+    $identityValue
 );
 
 if ($stmt->execute()) {

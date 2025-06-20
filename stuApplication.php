@@ -42,17 +42,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $end_date = $_POST['end_date'] ?? '';
     $allowance = $_POST['allowance'] ?? '';
     $job_description = $_POST['job_description'] ?? '';
+    $identityType = $_POST['identity_type'] ?? null;
+    $identityValue = $_POST['identity_value'] ?? null;
+
 
     $sql = "INSERT INTO applications 
             (Student_ID, Internship_Start_Date, Internship_End_Date, Allowance_Amount, Job_Description,
              Company_Name, Company_Address, Company_State, Company_Contact_Name, Company_Designation,
-             Company_Phone, Company_Email, Company_Website)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+             Company_Phone, Company_Email, Company_Website, Student_Identity_Type, Student_Identity_Value)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     $stmt = $conn->prepare($sql);
     if ($stmt) {
         $stmt->bind_param(
-            "sssssssssssss",
+            "sssssssssssssss",
             $student_id,
             $start_date,
             $end_date,
@@ -65,7 +68,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $company_designation,
             $company_phone,
             $company_email,
-            $company_website
+            $company_website,
+            $identityType,
+            $identityValue
         );
 
         if ($stmt->execute()) {
@@ -122,8 +127,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="tel" name="student_phone" value="<?php echo $student_phone; ?>" readonly placeholder="Phone">
             <input type="text" name="student_program" value="<?php echo $student_program; ?>" readonly placeholder="Program">
 
+            <!-- Identity Type Dropdown -->
+            <label for="identity_type">Identity Type:</label>
+            <select name="identity_type" id="identity_type" required>
+            <option value="">-- Select Type --</option>
+            <option value="NRIC">NRIC</option>
+            <option value="Passport">Passport</option>
+            <option value="Other">Other</option>
+            </select>
+
+            <!-- NRIC Fields (Shown only when NRIC is selected) -->
+            <div id="nric-fields" style="display: none; margin-top: 10px;">
+            <label>NRIC:</label>
+            <div style="display: flex; gap: 5px; align-items: center;">
+                <input type="text" id="nric_part1" maxlength="6" placeholder="xxxxxx" pattern="\d{6}">
+                - 
+                <input type="text" id="nric_part2" maxlength="2" placeholder="xx" pattern="\d{2}">
+                - 
+                <input type="text" id="nric_part3" maxlength="4" placeholder="xxxx" pattern="\d{4}">
+            </div>
+            </div>
+
+            <!-- Standard Identity Value (Hidden when NRIC selected) -->
+            <div id="identity-value-wrapper" style="margin-top: 10px;">
+            <label for="identity_value">Identity Value:</label>
+            <input type="text" name="identity_value" id="identity_value" placeholder="e.g. Passport No" required>
+            </div>
+
+
+
             <!-- Internship Fields -->
+            <label for="start_date">Internship Start Date:</label>
             <input type="date" name="start_date" required placeholder="Internship Start Date">
+            <label for="end_date">Internship End Date:</label>
             <input type="date" name="end_date" required placeholder="Internship End Date">
             <input type="number" name="allowance" step="0.01" placeholder="Allowance (optional)">
             <textarea name="job_description" placeholder="Job Description" rows="3"></textarea>
@@ -141,6 +177,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <button type="submit">Submit Application</button>
         </form>
     </div>
+        <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        const identityType = document.getElementById("identity_type");
+        const nricFields = document.getElementById("nric-fields");
+        const identityValueWrapper = document.getElementById("identity-value-wrapper");
+        const identityValueInput = document.getElementById("identity_value");
+        const form = document.querySelector("form");
+
+        function toggleIdentityFields() {
+            if (identityType.value === "NRIC") {
+            nricFields.style.display = "block";
+            identityValueWrapper.style.display = "none";
+            identityValueInput.removeAttribute("required");
+            } else {
+            nricFields.style.display = "none";
+            identityValueWrapper.style.display = "block";
+            identityValueInput.setAttribute("required", "required");
+            }
+        }
+
+        identityType.addEventListener("change", toggleIdentityFields);
+
+        form.addEventListener("submit", function () {
+            if (identityType.value === "NRIC") {
+            const p1 = document.getElementById("nric_part1").value;
+            const p2 = document.getElementById("nric_part2").value;
+            const p3 = document.getElementById("nric_part3").value;
+            const merged = `${p1}-${p2}-${p3}`;
+            identityValueInput.value = merged;
+            }
+        });
+        });
+        </script>
 </div>
 </body>
 </html>
