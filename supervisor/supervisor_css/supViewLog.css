@@ -182,3 +182,17 @@ header h1 {
   background-color: #1ca4e0;
   color: white;
 }
+
+.download-btn {
+    background-color: #2a6ea7;
+    color: white;
+    padding: 10px 16px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 10px;
+}
+.download-btn:hover {
+    background-color: #1c4f7b;
+}

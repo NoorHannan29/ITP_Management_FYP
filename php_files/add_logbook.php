@@ -8,44 +8,34 @@ if (!isset($_SESSION['student_id'])) {
 }
 
 $studentID = $_SESSION['student_id'];
-$logbookDate = $_POST['logbook_date'];
+$logDate = $_POST['logbook_date'];
 $weekNumber = $_POST['week_number'];
 $reportPeriod = $_POST['report_period'];
-$companyName = $_POST['company_name'];
-$trainingPeriod = $_POST['training_period'];
-$companySupervisor = $_POST['company_supervisor'];
-$facultySupervisor = $_POST['faculty_supervisor'];
-$tasksDone = $_POST['tasks_done'];
-$reflections = $_POST['reflections'];
-$supervisorRemarks = $_POST['supervisor_remarks'] ?? null;
 
-// Insert query
-$sql = "INSERT INTO logbook (
-    Student_ID, Logbook_Date, Week_Number, Report_Period, Company_Name,
-    Training_Period, Company_Supervisor_Name, Faculty_Supervisor_Name,
-    Tasks_Done, Reflections, Supervisor_Remarks, Supervisor_Signed, Supervisor_Viewed
-) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, 0)";
+// Handle file upload
+$uploadDir = "../uploads/logbooks/";
+if (!file_exists($uploadDir)) {
+    mkdir($uploadDir, 0777, true);
+}
 
-$stmt = $conn->prepare($sql);
-$stmt->bind_param(
-    "ssissssssss",
-    $studentID,
-    $logbookDate,
-    $weekNumber,
-    $reportPeriod,
-    $companyName,
-    $trainingPeriod,
-    $companySupervisor,
-    $facultySupervisor,
-    $tasksDone,
-    $reflections,
-    $supervisorRemarks
-);
+$ext = pathinfo($_FILES['logbook_file']['name'], PATHINFO_EXTENSION);
+$newFilename = "Logbook_" . $studentID . "_Week" . $weekNumber . "_" . date("YmdHis") . "." . $ext;
+$targetFile = $uploadDir . $newFilename;
 
-if ($stmt->execute()) {
+if (move_uploaded_file($_FILES['logbook_file']['tmp_name'], $targetFile)) {
+    $relativePath = "uploads/logbooks/" . $newFilename;
+
+    $stmt = $conn->prepare("INSERT INTO logbook 
+        (Student_ID, Logbook_Date, Week_Number, Report_Period, Supervisor_Viewed, Logbook_File_Path) 
+        VALUES (?, ?, ?, ?, 0, ?)");
+
+    $stmt->bind_param("ssiss", $studentID, $logDate, $weekNumber, $reportPeriod, $relativePath);
+    $stmt->execute();
+    $stmt->close();
+
     header("Location: ../stuLogBooks.php?success=1");
     exit();
 } else {
-    echo "Error: " . $stmt->error;
+    echo "<script>alert('Failed to upload logbook.'); window.history.back();</script>";
 }
 ?>

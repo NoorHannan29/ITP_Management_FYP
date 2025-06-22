@@ -51,7 +51,7 @@ $student_program = $_SESSION['student_program'];
     <!-- Main Content -->
     <div class="main-content">
       <div class="form-section">
-        <form action="php_files/add_logbook.php" method="post" class="logbook-form">
+        <form action="php_files/add_logbook.php" method="post" enctype="multipart/form-data" class="logbook-form">
           <label>Student ID:</label>
           <input type="text" name="student_id" value="<?php echo $student_id; ?>" readonly>
 
@@ -67,26 +67,11 @@ $student_program = $_SESSION['student_program'];
           <label for="report_period">Report Period (e.g. June 10 – June 14):</label>
           <input type="text" name="report_period" required>
 
-          <label for="company_name">Company Name:</label>
-          <input type="text" name="company_name" required>
+          <label for="logbook_file">Upload Logbook PDF:</label>
+          <input type="file" name="logbook_file" id="logbook_file" accept=".pdf" required>
 
-          <label for="training_period">Training Period:</label>
-          <input type="text" name="training_period" required>
+          <br>
 
-          <label for="company_supervisor">Company Supervisor Name:</label>
-          <input type="text" name="company_supervisor" required>
-
-          <label for="faculty_supervisor">Faculty Supervisor Name:</label>
-          <input type="text" name="faculty_supervisor" required>
-
-          <label for="tasks_done">Tasks Done:</label>
-          <textarea name="tasks_done" rows="5" required></textarea>
-
-          <label for="reflections">Reflections:</label>
-          <textarea name="reflections" rows="5" required></textarea>
-
-          <label for="supervisor_remarks">Remarks from Company Supervisor (optional):</label>
-          <textarea name="supervisor_remarks" rows="4"></textarea>
 
           <br>
           <button type="submit" class="submit-button">Submit Logbook Entry</button>

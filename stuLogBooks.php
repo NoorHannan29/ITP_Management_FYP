@@ -58,8 +58,9 @@ $result = $stmt->get_result();
                     <tr>
                     <th>No.</th>
                     <th>Date</th>
-                    <th>Tasks Summary</th>
+                    <th>Report Period</th>
                     <th>Status</th>
+                    <th>Report File</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -74,17 +75,18 @@ $result = $stmt->get_result();
                     <tr>
                         <td><?php echo $count++; ?></td>
                         <td><?php echo htmlspecialchars($row['Logbook_Date']); ?></td>
-                        <td>
-                        <a href="stuViewLog.php?id=<?php echo $row['Logbook_ID']; ?>">
-                            <?php echo htmlspecialchars($taskPreview); ?>
-                        </a>
-                        </td>
+                        <td><?php echo htmlspecialchars($row['Report_Period']); ?></td>
                         <td>
                         <?php if ($row['Supervisor_Viewed']): ?>
                             <span class="status-viewed">Viewed by Supervisor ✅</span>
                         <?php else: ?>
                             <span class="status-pending">Not Viewed ❌</span>
                         <?php endif; ?>
+                        </td>
+                        <td>
+                            <a href="<?= htmlspecialchars($row['Logbook_File_Path']) ?>" target="_blank" class="download-btn">
+                        📄 View PDF
+                        </a>
                         </td>
                     </tr>
                     <?php endwhile; ?>

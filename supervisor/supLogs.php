@@ -21,7 +21,7 @@ $row = $result->fetch_assoc();
 $_SESSION['is_committee'] = !empty($row['Committee_ID']) ? 1 : 0;
 
 // Fetch logbook entries of supervised students
-$sql = "SELECT s.Student_ID, s.student_name, l.logbook_id, l.logbook_date, l.supervisor_viewed
+$sql = "SELECT s.Student_ID, s.student_name, l.logbook_id, l.logbook_date, l.supervisor_viewed, l.Report_Period
         FROM student s
         JOIN logbook l ON s.Student_ID = l.student_id
         WHERE s.Supervisor_ID = ?
@@ -92,6 +92,7 @@ $conn->close();
               <th>Student ID</th>
               <th>Student Name</th>
               <th>Date</th>
+              <th>Report Period</th>
               <th>Viewed</th>
             </tr>
           </thead>
@@ -102,6 +103,7 @@ $conn->close();
               <td><?php echo htmlspecialchars($log['Student_ID']); ?></td>
               <td><?php echo htmlspecialchars($log['student_name']); ?></td>
               <td><?php echo htmlspecialchars($log['logbook_date']); ?></td>
+              <td><?php echo htmlspecialchars($log['Report_Period']); ?></td>
               <td><?php echo $log['supervisor_viewed'] ? '✅Yes' : '❌No'; ?></td>
             </tr>
             <?php endforeach; ?>

@@ -8,9 +8,6 @@ if (!isset($_SESSION['supervisor_id']) || !isset($_SESSION['supervisor_name'])) 
 
 require_once '../php_files/db_connect.php';
 
-$supervisor_id = $_SESSION['supervisor_id'];
-$supervisor_name = $_SESSION['supervisor_name'];
-
 $logbook_id = $_GET['logbook_id'] ?? null;
 if (!$logbook_id) {
     echo "Invalid logbook ID.";
@@ -28,12 +25,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['mark_read'])) {
     exit();
 }
 
-// Get logbook + student info
+// Fetch logbook data
 $stmt = $conn->prepare("
-        SELECT l.logbook_id, l.student_id, l.logbook_date, l.week_number, l.report_period,
-       l.company_name, l.training_period, l.company_supervisor_name, l.faculty_supervisor_name,
-       l.tasks_done, l.reflections, l.supervisor_remarks, l.supervisor_viewed,
-       s.student_name
+    SELECT l.logbook_id, l.student_id, l.logbook_date, l.week_number, l.report_period, 
+           l.logbook_file_path, l.supervisor_viewed, s.student_name
     FROM logbook l
     JOIN student s ON l.student_id = s.Student_ID
     WHERE l.logbook_id = ?
@@ -68,22 +63,20 @@ $conn->close();
 <div class="main-layout">
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
-      <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
-      <div class="sidebar-content">
-        <ul class="sidebar-nav">
-          <li><a href="supITPStudents.php">Dashboard</a></li>
-          <li><a href="supLogs.php">Review Logbooks</a></li>
-          <li><a href="supEvaluationPage.php">Evaluate Students</a></li>
-
-          <?php if (!empty($_SESSION['is_committee'])): ?>
-            <li><a href="comAnnouncements.php">Announcements</a></li>
-            <li><a href="comApplication.php">Student Applications</a></li>
-            <li><a href="comSupervisorList.php">List of Supervisors</a></li>
-          <?php endif; ?>
-        </ul>
-      </div>
+        <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+        <div class="sidebar-content">
+            <ul class="sidebar-nav">
+                <li><a href="supITPStudents.php">Dashboard</a></li>
+                <li><a href="supLogs.php">Review Logbooks</a></li>
+                <li><a href="supEvaluationPage.php">Evaluate Students</a></li>
+                <?php if (!empty($_SESSION['is_committee'])): ?>
+                    <li><a href="comAnnouncements.php">Announcements</a></li>
+                    <li><a href="comApplication.php">Student Applications</a></li>
+                    <li><a href="comSupervisorList.php">List of Supervisors</a></li>
+                <?php endif; ?>
+            </ul>
+        </div>
     </div>
-
 
     <!-- Main Content -->
     <div class="main-content">
@@ -95,34 +88,30 @@ $conn->close();
             <h2>Student Name: <?= htmlspecialchars($log['student_name']) ?></h2>
             <p><strong>Student ID:</strong> <?= htmlspecialchars($log['student_id']) ?></p>
             <p><strong>Date:</strong> <?= htmlspecialchars($log['logbook_date']) ?></p>
+            <p><strong>Week Number:</strong> <?= htmlspecialchars($log['week_number']) ?></p>
+            <p><strong>Report Period:</strong> <?= htmlspecialchars($log['report_period']) ?></p>
             <p><strong>Status:</strong> <?= $log['supervisor_viewed'] ? 'Viewed' : 'Not Viewed' ?></p>
 
             <div class="log-content">
-            <h3>Logbook Entry</h3>
-            <p><strong>Week Number:</strong> <?= htmlspecialchars($log['week_number']) ?></p>
-            <p><strong>Report Period:</strong> <?= htmlspecialchars($log['report_period']) ?></p>
-            <p><strong>Company:</strong> <?= htmlspecialchars($log['company_name']) ?></p>
-            <p><strong>Training Period:</strong> <?= htmlspecialchars($log['training_period']) ?></p>
-            <p><strong>Company Supervisor:</strong> <?= htmlspecialchars($log['company_supervisor_name']) ?></p>
-            <p><strong>Faculty Supervisor:</strong> <?= htmlspecialchars($log['faculty_supervisor_name']) ?></p>
-            <hr>
-            <p><strong>Tasks Done:</strong><br><?= nl2br(htmlspecialchars($log['tasks_done'])) ?></p>
-            <p><strong>Reflections:</strong><br><?= nl2br(htmlspecialchars($log['reflections'])) ?></p>
-            <p><strong>Supervisor Remarks:</strong><br><?= nl2br(htmlspecialchars($log['supervisor_remarks'] ?? '—')) ?></p>
+                <h3>Logbook File</h3>
+                <?php if (!empty($log['logbook_file_path'])): ?>
+                    <a href="../<?= htmlspecialchars($log['logbook_file_path']) ?>" target="_blank" class="download-btn">
+                        📄 Download PDF
+                    </a>
+                <?php else: ?>
+                    <p style="color:red;">No file uploaded.</p>
+                <?php endif; ?>
             </div>
 
-            <div class="button-row">
-                <div class="go-back-container">
-                    <button onclick="history.back()">Go Back</button>
-                        <?php if ($log['supervisor_viewed'] == 0): ?>
-                        <form method="post">
+            <div class="button-row" style="margin-top: 20px;">
+                <button onclick="window.location.href='supLogs.php'">Go Back</button>
+                <?php if ($log['supervisor_viewed'] == 0): ?>
+                    <form method="post" style="display:inline;">
                         <input type="hidden" name="logbook_id" value="<?= $log['logbook_id'] ?>">
-                        <button type="submit" name="mark_read" style="float:right;">Mark as Read</button>
-                        </form>
-                        <?php endif; ?>
+                        <button type="submit" name="mark_read">Mark as Read</button>
+                    </form>
+                <?php endif; ?>
             </div>
-
-
         </div>
     </div>
 </div>
@@ -134,4 +123,5 @@ $conn->close();
 </script>
 </body>
 </html>
+
                     
