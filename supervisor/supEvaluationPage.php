@@ -44,7 +44,7 @@ $stmt->close();
   </header>
 
   <div class="main-layout">
-        <!-- Sidebar -->
+    <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
       <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
       <div class="sidebar-content">
@@ -55,8 +55,8 @@ $stmt->close();
 
           <?php if (!empty($_SESSION['is_committee'])): ?>
             <li><a href="comAnnouncements.php">Announcements</a></li>
-            <li><a href="comITPApplication.html">Student Applications(TRAINING)</a></li>
-            <li><a href="comApplication.php">Student Applications(PLACEMENT)</a></li>
+            <li><a href="comITPApplication.php">ITP Applications</a></li>
+            <li><a href="comApplication.php">Placement Applications</a></li>
             <li><a href="comSupervisorList.php">List of Supervisors</a></li>
           <?php endif; ?>
         </ul>

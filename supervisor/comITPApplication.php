@@ -10,18 +10,18 @@ require_once '../php_files/db_connect.php';
 
 $supervisor_name = $_SESSION['supervisor_name'];
 
-// Fetch applications with status not yet approved
-$sql = "SELECT s.Student_ID, s.student_name, a.Submitted_At, a.Application_Status, a.Application_ID
-        FROM applications a
-        JOIN student s ON s.Student_ID = a.Student_ID
-        WHERE a.Application_Status = 'Pending'";
+// Fetch ITP applications with status not yet approved
+$sql = "SELECT s.Student_ID, s.student_name, i.Application_Date, i.Status, i.ITP_Application_ID
+        FROM itp_applications i
+        JOIN student s ON s.Student_ID = i.Student_ID
+        WHERE i.Status = 'Pending'";
 
 $result = $conn->query($sql);
 
-$pending_apps = [];
+$pending_itp_apps = [];
 if ($result && $result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        $pending_apps[] = $row;
+        $pending_itp_apps[] = $row;
     }
 }
 
@@ -32,7 +32,7 @@ $conn->close();
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Committee - Pending Applications</title>
+  <title>Committee - ITP Applications</title>
   <link rel="stylesheet" href="supervisor_css/supITPStudents.css">
   <script>
     function toggleSidebar() {
@@ -70,8 +70,8 @@ $conn->close();
     <div class="main-content">
       <div class="grid-section">
         <div class="alert-box">
-          <h3>Pending Student Applications</h3>
-          <?php if (count($pending_apps) > 0): ?>
+          <h3>Pending ITP Applications</h3>
+          <?php if (count($pending_itp_apps) > 0): ?>
             <table>
               <thead>
                 <tr>
@@ -83,14 +83,14 @@ $conn->close();
                 </tr>
               </thead>
               <tbody>
-                <?php foreach ($pending_apps as $app): ?>
+                <?php foreach ($pending_itp_apps as $app): ?>
                   <tr>
                     <td><?php echo htmlspecialchars($app['Student_ID']); ?></td>
                     <td><?php echo htmlspecialchars($app['student_name']); ?></td>
-                    <td><?php echo htmlspecialchars($app['Submitted_At']); ?></td>
-                    <td><?php echo htmlspecialchars($app['Application_Status']); ?></td>
+                    <td><?php echo htmlspecialchars($app['Application_Date']); ?></td>
+                    <td><?php echo htmlspecialchars($app['Status']); ?></td>
                     <td>
-                      <a href="comApplicationApproval.php?application_id=<?php echo urlencode($app['Application_ID']); ?>" 
+                      <a href="comITPApplicationApproval.php?itp_id=<?php echo urlencode($app['ITP_Application_ID']); ?>" 
                          style="padding: 6px 12px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px;">
                         Review
                       </a>
@@ -100,7 +100,7 @@ $conn->close();
               </tbody>
             </table>
           <?php else: ?>
-            <p>No pending applications found.</p>
+            <p>No pending ITP applications found.</p>
           <?php endif; ?>
         </div>
       </div>

@@ -15,6 +15,30 @@ $student_email = $_SESSION['student_email'] ?? '';
 $student_phone = $_SESSION['student_phone'] ?? '';
 $student_program = $_SESSION['student_program'] ?? '';
 
+// ✅ Check if ITP application is approved
+$itp_check_sql = "SELECT Status FROM itp_applications WHERE Student_ID = ?";
+$itp_check_stmt = $conn->prepare($itp_check_sql);
+$itp_check_stmt->bind_param("s", $student_id);
+$itp_check_stmt->execute();
+$itp_check_stmt->store_result();
+
+if ($itp_check_stmt->num_rows === 0) {
+    // No ITP application submitted
+    echo "<script>alert('You must submit and receive approval for your ITP application first.'); window.location.href='stuITPApplication.php';</script>";
+    exit();
+}
+
+$itp_check_stmt->bind_result($itp_status);
+$itp_check_stmt->fetch();
+
+if ($itp_status !== 'Approved') {
+    echo "<script>alert('Your ITP application is still pending or was denied. You cannot proceed until it is approved.'); window.location.href='main.php';</script>";
+    exit();
+}
+
+$itp_check_stmt->close();
+
+// ✅ Check if ITP placement application already exists
 $check_sql = "SELECT Application_ID FROM applications WHERE Student_ID = ?";
 $check_stmt = $conn->prepare($check_sql);
 $check_stmt->bind_param("s", $student_id);

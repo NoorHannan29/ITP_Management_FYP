@@ -8,6 +8,28 @@ if (!isset($_SESSION['student_id'])) {
 }
 
 $studentID = $_SESSION['student_id'];
+
+// Check if the student’s ITP placement application is approved
+$placement_check_sql = "SELECT Application_Status FROM applications WHERE Student_ID = ?";
+$placement_check_stmt = $conn->prepare($placement_check_sql);
+$placement_check_stmt->bind_param("s", $student_id);
+$placement_check_stmt->execute();
+$placement_check_stmt->store_result();
+
+if ($placement_check_stmt->num_rows === 0) {
+    echo "<script>alert('You must submit your ITP placement application first.'); window.location.href='stuApplication.php';</script>";
+    exit();
+}
+
+$placement_check_stmt->bind_result($placement_status);
+$placement_check_stmt->fetch();
+
+if ($placement_status !== 'Approved') {
+    echo "<script>alert('Your ITP placement has not been approved yet.'); window.location.href='main.php';</script>";
+    exit();
+}
+
+$placement_check_stmt->close();
 $query = "SELECT * FROM logbook WHERE Student_ID = ? ORDER BY Logbook_Date DESC";
 $stmt = $conn->prepare($query);
 $stmt->bind_param("s", $studentID);

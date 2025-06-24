@@ -21,7 +21,7 @@ $appl_stmt->bind_param("s", $student_id);
 $appl_stmt->execute();
 $appl_stmt->store_result();
 if ($appl_stmt->num_rows === 0) {
-    $alerts[] = "You have not applied for your Industrial Training yet.";
+    $alerts[] = "You have not applied for your Industrial Training Placement yet.";
 }
 $appl_stmt->close();
 

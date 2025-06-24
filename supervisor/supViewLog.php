@@ -63,20 +63,21 @@ $conn->close();
 <div class="main-layout">
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
-        <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
-        <div class="sidebar-content">
-            <ul class="sidebar-nav">
-                <li><a href="supITPStudents.php">Dashboard</a></li>
-                <li><a href="supLogs.php">Review Logbooks</a></li>
-                <li><a href="supEvaluationPage.php">Evaluate Students</a></li>
-                <?php if (!empty($_SESSION['is_committee'])): ?>
-                    <li><a href="comAnnouncements.php">Announcements</a></li>
-                    <li><a href="comITPApplication.html">Student Applications(TRAINING)</a></li>
-                    <li><a href="comApplication.php">Student Applications(PLACEMENT)</a></li>
-                    <li><a href="comSupervisorList.php">List of Supervisors</a></li>
-                <?php endif; ?>
-            </ul>
-        </div>
+      <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+      <div class="sidebar-content">
+        <ul class="sidebar-nav">
+          <li><a href="supITPStudents.php">Dashboard</a></li>
+          <li><a href="supLogs.php">Review Logbooks</a></li>
+          <li><a href="supEvaluationPage.php">Evaluate Students</a></li>
+
+          <?php if (!empty($_SESSION['is_committee'])): ?>
+            <li><a href="comAnnouncements.php">Announcements</a></li>
+            <li><a href="comITPApplication.php">ITP Applications</a></li>
+            <li><a href="comApplication.php">Placement Applications</a></li>
+            <li><a href="comSupervisorList.php">List of Supervisors</a></li>
+          <?php endif; ?>
+        </ul>
+      </div>
     </div>
 
     <!-- Main Content -->
