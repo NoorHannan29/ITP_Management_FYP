@@ -10,7 +10,8 @@ A- Completed
 - Student Announcement(Shows test announcements)
 - Company List(Shows available companies)
 - Student registration(registering new student possible)
-- Application page(Can make applications for ITP now)
+- Application page for ITP itself
+- Application page(Can make applications for ITP Placement now)
 - Log Book Manager(can create log book)
 - Application Status
 - Main Page(student)(shows everthing except for photo)
