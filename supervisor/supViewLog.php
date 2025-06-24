@@ -71,7 +71,8 @@ $conn->close();
                 <li><a href="supEvaluationPage.php">Evaluate Students</a></li>
                 <?php if (!empty($_SESSION['is_committee'])): ?>
                     <li><a href="comAnnouncements.php">Announcements</a></li>
-                    <li><a href="comApplication.php">Student Applications</a></li>
+                    <li><a href="comITPApplication.html">Student Applications(TRAINING)</a></li>
+                    <li><a href="comApplication.php">Student Applications(PLACEMENT)</a></li>
                     <li><a href="comSupervisorList.php">List of Supervisors</a></li>
                 <?php endif; ?>
             </ul>

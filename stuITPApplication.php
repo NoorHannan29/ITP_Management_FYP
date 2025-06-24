@@ -83,7 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <!-- Form Content -->
     <div class="content" id="content">
-        <form class="registration-form" method="POST" action="itpApplication.html">
+        <form class="registration-form" method="POST" action="php_files/submit_itp_application.php">
             <!-- Pre-filled Info -->
             <input type="text" value="<?php echo $student_name; ?>" readonly placeholder="Full Name">
             <input type="text" value="<?php echo $student_id; ?>" readonly placeholder="Student ID">
