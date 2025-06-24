@@ -170,3 +170,23 @@ Array
         )
 
 )
+RAW: {"appID":12}
+Array
+(
+    [appID] => 12
+)
+Array
+(
+    [0] => Array
+        (
+            [Supervisor_ID] => 1
+            [Student_Count] => 1
+        )
+
+    [1] => Array
+        (
+            [Supervisor_ID] => 2
+            [Student_Count] => 1
+        )
+
+)

@@ -74,7 +74,7 @@ $conn->close();
                 <li><a href="stuITPApplication.php">Apply for ITP</a></li>
                 <li><a href="stuApplication.php">Application For ITP Placement</a></li>
                 <li><a href="stuCompList.html">Company Listings</a></li>
-                <li><a href="stuLogBooks.html">Logbook Management</a></li>
+                <li><a href="stuLogBooks.php">Logbook Management</a></li>
                 <li><a href="stuGuidelines.html">Guidelines for ITP</a></li>
             </ul>
         </div>
