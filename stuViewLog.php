@@ -45,19 +45,20 @@ $log = $result->fetch_assoc();
   <div class="main-layout">
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
-      <button class="toggle-btn" onclick="toggleSidebar()">&#60; Hide</button>
-      <div class="sidebar-content">
-        <h3>Student Pages</h3>
-        <ul class="sidebar-nav">
-          <li><a href="main.php">Dashboard</a></li>
-          <li><a href="stuAnnouncement.html">Announcements</a></li>
-          <li><a href="stuProfile.html">Profile</a></li>
-          <li><a href="stuApplication.php">Application For ITP</a></li>
-          <li><a href="stuCompList.html">Company Listings</a></li>
-          <li><a href="stuLogBooks.php">Logbook Management</a></li>
-          <li><a href="stuGuidelines.html">Guidelines for ITP</a></li>
-        </ul>
-      </div>
+        <button class="toggle-btn" onclick="toggleSidebar()">&#60; Hide</button>
+        <div class="sidebar-content">
+            <h3>Student Pages</h3>
+            <ul class="sidebar-nav">
+                <li><a href="main.php">Dashboard</a></li>
+                <li><a href="stuAnnouncement.html">Announcements</a></li>
+                <li><a href="stuProfile.html">Profile</a></li>
+                <li><a href="stuITPApplication.php">Apply for ITP</a></li>
+                <li><a href="stuApplication.php">Application For ITP Placement</a></li>
+                <li><a href="stuCompList.html">Company Listings</a></li>
+                <li><a href="stuLogBooks.html">Logbook Management</a></li>
+                <li><a href="stuGuidelines.html">Guidelines for ITP</a></li>
+            </ul>
+        </div>
     </div>
 
     <!-- Main Content -->

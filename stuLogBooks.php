@@ -28,6 +28,7 @@ $result = $stmt->get_result();
 <header><h1>LOG BOOK PAGE</h1></header>
 
 <div class="main-layout">
+    <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
         <button class="toggle-btn" onclick="toggleSidebar()">&#60; Hide</button>
         <div class="sidebar-content">
@@ -36,9 +37,10 @@ $result = $stmt->get_result();
                 <li><a href="main.php">Dashboard</a></li>
                 <li><a href="stuAnnouncement.html">Announcements</a></li>
                 <li><a href="stuProfile.html">Profile</a></li>
-                <li><a href="stuApplication.php">Application For ITP</a></li>
+                <li><a href="stuITPApplication.php">Apply for ITP</a></li>
+                <li><a href="stuApplication.php">Application For ITP Placement</a></li>
                 <li><a href="stuCompList.html">Company Listings</a></li>
-                <li><a href="stuLogBooks.php">Logbook Management</a></li>
+                <li><a href="stuLogBooks.html">Logbook Management</a></li>
                 <li><a href="stuGuidelines.html">Guidelines for ITP</a></li>
             </ul>
         </div>

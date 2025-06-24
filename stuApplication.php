@@ -161,7 +161,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <li><a href="main.php">Dashboard</a></li>
                 <li><a href="stuAnnouncement.html">Announcements</a></li>
                 <li><a href="stuProfile.html">Profile</a></li>
-                <li><a href="stuApplication.php">Application For ITP</a></li>
+                <li><a href="stuITPApplication.php">Apply for ITP</a></li>
+                <li><a href="stuApplication.php">Application For ITP Placement</a></li>
                 <li><a href="stuCompList.html">Company Listings</a></li>
                 <li><a href="stuLogBooks.html">Logbook Management</a></li>
                 <li><a href="stuGuidelines.html">Guidelines for ITP</a></li>
