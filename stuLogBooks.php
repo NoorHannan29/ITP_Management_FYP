@@ -10,9 +10,9 @@ if (!isset($_SESSION['student_id'])) {
 $studentID = $_SESSION['student_id'];
 
 // Check if the student’s ITP placement application is approved
-$placement_check_sql = "SELECT Application_Status FROM applications WHERE Student_ID = ?";
+$placement_check_sql = "SELECT Application_Status FROM applications WHERE student_id = ?";
 $placement_check_stmt = $conn->prepare($placement_check_sql);
-$placement_check_stmt->bind_param("s", $student_id);
+$placement_check_stmt->bind_param("s", $studentID);
 $placement_check_stmt->execute();
 $placement_check_stmt->store_result();
 
